@@ -1,0 +1,3943 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div id="sitesDropdown" class="sites-dropdown">
+    <button id="sitesButton" class="sites-button">WebNobel</button>
+    <div id="sitesContent" class="sites-content">
+         <a href="https://viatecnologia.sumupstore.com/" target="_blank">ViaTecnologia Ai</a>
+        <a href="https://viatecnologia.sumupstore.com/" target="_blank">ViaTecnologia SumUp</a>
+         <a href="https://vta.sell.app/" target="_blank">ViaTecnologia SellApp</a>
+         <a href="https://t.me/vtavta_bot/" target="_blank">ViaTecnologia Cripto</a>
+         <a href="https://t.me/stampamelo/" target="_blank">Stampamelo in 3D</a>
+                 <a href="https://shopfather.io" target="_blank">ShopFather Negozi</a>
+        
+    </div>
+</div>
+</div>
+</div>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --button-bg: #f0f0f0;
+            --button-text: #333333;
+            --active-button-bg: #007bff;
+            --active-button-text: #ffffff;
+            --card-border: #dddddd;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--text-color);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .top-buttons, .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        button:hover, button.active {
+            background-color: var(--active-button-bg);
+            color: var(--active-button-text);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+        }
+
+        .overlay-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--bg-color);
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-color);
+        }
+
+        .search-container { 
+            text-align: center; 
+            margin-bottom: 20px; 
+        }
+
+        .search-container input { 
+            width: 100%;
+            max-width: 300px; 
+            padding: 8px; 
+            border-radius: 5px; 
+            border: 1px solid var(--card-border);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+        .card { 
+            border: 1px solid var(--card-border);
+            border-radius: 5px; 
+            overflow: hidden;
+            transition: transform 0.3s;
+            background-color: var(--bg-color);
+        }
+
+        .card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+        }
+
+        .card img { 
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+        }
+
+        .card h3 { 
+            padding: 10px; 
+            margin: 0; 
+            text-align: center;
+            color: var(--text-color);
+            font-size: 16px;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+ .category-count {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 2px 5px;
+    margin-left: 5px;
+    font-size: 10px;
+}
+
+       .counter {
+    background-color: #e0e0e0;  /* Sfondo leggermente più scuro */
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* Aggiunta ombra leggera */
+    margin-bottom: 15px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.counter div {
+    margin: 3px 8px;
+    text-align: center;
+}
+
+.counter span {
+    background-color: #007bff;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 3px;
+}
+
+        .all-button {
+            background-color: #007bff;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        body.dark-theme {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --button-bg: #333333;
+            --button-text: #ffffff;
+            --active-button-bg: #00a86b;
+            --active-button-text: #ffffff;
+            --card-border: #444444;
+        }
+        .button-container {
+    gap: 15px;  /* Aumenta lo spazio tra i bottoni */
+    margin-bottom: 30px;  /* Aumenta lo spazio sotto il container */
+    
+}
+button {
+    /* ... altri stili ... */
+    margin: 5px;  /* Aggiungi un margine intorno ai bottoni */
+}
+.counter {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.counter span {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+body.dark-theme .counter {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-theme .counter span {
+    background-color: #00a86b;
+}
+.top-buttons {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.top-buttons button {
+    background-color: #ffffff;
+    color: #333333;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.top-buttons button:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+body.dark-theme .top-buttons {
+    background-color: #2a2a2a;
+}
+
+body.dark-theme .top-buttons button {
+    background-color: #3a3a3a;
+    color: #ffffff;
+}
+
+body.dark-theme .top-buttons button:hover {
+    background-color: #00a86b;
+}
+body.dark-theme .all-button.active {
+    background-color: #00a86b;
+    color: #ffffff;
+}
+.all-button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+}
+
+.all-button.active {
+    background-color: var(--active-button-bg);
+    color: var(--active-button-text);
+}
+
+body.dark-theme .all-button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+}
+
+body.dark-theme .all-button.active {
+    background-color: var(--active-button-bg);
+    color: var(--active-button-text);
+}
+.dashboard-container {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dashboard-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.dashboard-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.dashboard-controls button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dashboard-controls button:hover {
+    background-color: #0056b3;
+}
+
+.dashboard-counter {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.dashboard-counter div {
+    text-align: center;
+}
+
+.dashboard-counter span {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.dashboard-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+body.dark-theme .dashboard-container {
+    background-color: #2a2a2a;
+}
+
+body.dark-theme .dashboard-counter {
+    background-color: #3a3a3a;
+    color: white;
+}
+
+body.dark-theme .dashboard-controls button {
+    background-color: #00a86b;
+}
+
+body.dark-theme .dashboard-controls button:hover {
+    background-color: #008c5a;
+}
+.category-button {
+    padding: 5px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.category-button:hover, 
+.category-button.active {
+    background-color: var(--active-button-bg);
+    color: var(--active-button-text);
+}
+
+body.dark-theme .category-button {
+    background-color: #3a3a3a;
+    color: #fff;
+}
+
+body.dark-theme .category-button:hover, body.dark-theme .category-button.active {
+    background-color: #00a86b;
+}
+body.dark-theme .category-count {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.quote-container {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.quote {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.quote.visible {
+    opacity: 1;
+}
+
+.dashboard-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    text-align: left;
+}
+
+.dashboard-title.visible {
+    opacity: 1;
+}
+.like-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.like-button.active {
+    color: red;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.heart-container {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.heart-button {
+    background: none;
+    border: none;
+    padding: 8px;
+    margin: 0;
+    cursor: pointer;
+    font-size: 18px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.heart-button.active {
+    color: red;
+}
+
+.card h3 {
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    color: var(--text-color);
+    font-size: 16px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+#likeToggle.active {
+    color: red;
+}
+
+
+/* AGGIUNGI QUESTO CSS NELLA SEZIONE PRINCIPALE DEGLI STILI */
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.list-item {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.list-item-content {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    gap: 12px;
+    min-height: 72px;
+}
+
+.list-item-content img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.list-item-info {
+        flex: 1;
+        min-width: 0;
+    }
+.list-item-info h3 {
+        white-space: normal;
+        overflow: visible;
+    }
+.list-item-info p {
+    font-size: 12px;
+    color: #666;
+    margin: 4px 0 0;
+}
+
+.heart-button {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.open-button {
+    background-color: #007bff;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 45px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Media query per mobile */
+@media (max-width: 768px) {
+    .list-item-content {
+        padding: 10px;
+        width: auto;
+    }
+    
+    .dashboard-categories {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        max-height: none;
+        padding-bottom: 15px;
+    }
+    
+    .list-item-content img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .list-item-info h3 {
+        font-size: 13px;
+    }
+    
+    .list-item-info p {
+        font-size: 11px;
+    }
+    
+    .heart-button {
+        padding: 6px;
+    }
+    
+    .open-button {
+        padding: 4px 10px;
+        min-width: 45px;
+        margin-left: 4px;
+    }
+}
+
+body.dark-theme .list-item {
+    background-color: #2a2a2a;
+}
+
+body.dark-theme .list-item-info p {
+    color: #aaa;
+}
+
+body.dark-theme .list-item .open-button {
+    background-color: #00a86b;
+}
+.settings-panel {
+    background-color: #f2f2f7;
+    border-radius: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #d1d1d6;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.column-slider {
+    width: 100%;
+    margin-top: 10px;
+}
+
+body.dark-theme .settings-panel {
+    background-color: #1c1c1e;
+    color: white;
+}
+
+body.dark-theme .setting-item {
+    border-bottom-color: #38383a;
+}
+body.cyberpunk-theme {
+    --bg-color: #0a0a0a;
+    --text-color: #00ff00;
+    --button-bg: #ff00ff;
+    --button-text: #000000;
+    --active-button-bg: #00ffff;
+    --active-button-text: #000000;
+    --card-border: #ff00ff;
+}
+
+body.cyberpunk-theme .card,
+body.cyberpunk-theme .list-item {
+    border: 2px solid var(--card-border);
+    box-shadow: 0 0 10px var(--card-border);
+}
+
+body.cyberpunk-theme button {
+    border: 2px solid var(--button-text);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+body.cyberpunk-theme .dashboard-title {
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 10px var(--text-color);
+}
+
+body.cyberpunk-theme .quote {
+    font-style: italic;
+    border-left: 4px solid var(--text-color);
+    padding-left: 10px;
+}
+body.hacker-theme {
+    --bg-color: #000000;
+    --text-color: #00ff00;
+    --button-bg: #003300;
+    --button-text: #00ff00;
+    --active-button-bg: #006600;
+    --active-button-text: #ffffff;
+    --card-border: #00ff00;
+    font-family: 'Courier New', monospace;
+}
+
+body.hacker-theme .card,
+body.hacker-theme .list-item {
+    border: 1px solid var(--card-border);
+    box-shadow: 0 0 5px var(--card-border);
+    background-color: #001100;
+}
+
+body.hacker-theme button {
+    border: 1px solid var(--button-text);
+    text-transform: lowercase;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+body.hacker-theme .dashboard-title {
+    font-family: 'VT323', monospace;
+    text-shadow: 0 0 5px var(--text-color);
+}
+
+body.hacker-theme .quote {
+    border-left: 2px solid var(--text-color);
+    padding-left: 10px;
+    font-style: italic;
+}
+
+body.hacker-theme input[type="text"],
+body.hacker-theme input[type="range"] {
+    background-color: #001100;
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+}
+
+body.hacker-theme ::-webkit-scrollbar {
+    width: 10px;
+    background-color: #000000;
+}
+
+body.hacker-theme ::-webkit-scrollbar-thumb {
+    background-color: #00ff00;
+}
+body.hacker-theme .counter {
+    font-size: 10px;  /* Riduzione dimensione font */
+    padding: 8px;  /* Riduzione padding */
+}
+
+body.hacker-theme .counter div {
+    margin: 2px 6px;  /* Riduzione margini */
+}
+#webnobelLogo {
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+body.dark-theme #webnobelLogo,
+body.cyberpunk-theme #webnobelLogo,
+body.hacker-theme #webnobelLogo {
+    color: #ffffff;
+}
+body.vintage-theme {
+    --bg-color: #f3e5d8;
+    --text-color: #4a3728;
+    --button-bg: #d2b48c;
+    --button-text: #4a3728;
+    --active-button-bg: #8b4513;
+    --active-button-text: #f3e5d8;
+    --card-border: #8b4513;
+    font-family: 'Georgia', serif;
+}
+
+body.vintage-theme .card,
+body.vintage-theme .list-item {
+    border: 1px solid var(--card-border);
+    background-color: #ece0d1;
+}
+
+body.vintage-theme button {
+    border: 1px solid var(--button-text);
+    font-family: 'Georgia', serif;
+}
+
+body.vintage-theme .dashboard-title {
+    font-family: 'Playfair Display', serif;
+    color: #8b4513;
+}
+
+body.vintage-theme .quote {
+    font-style: italic;
+    color: #8b4513;
+}
+body.instagram-theme {
+    --bg-color: #fafafa;
+    --text-color: #262626;
+    --button-bg: #0095f6;
+    --button-text: #ffffff;
+    --active-button-bg: #00376b;
+    --active-button-text: #ffffff;
+    --card-border: #dbdbdb;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body.instagram-theme .card,
+body.instagram-theme .list-item {
+    border: 1px solid var(--card-border);
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+body.instagram-theme button {
+    border: none;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+body.instagram-theme .dashboard-title {
+    font-weight: 600;
+    color: #262626;
+}
+
+body.instagram-theme .quote {
+    font-style: normal;
+    color: #8e8e8e;
+}
+
+    .dashboard-title {
+        font-size: 24px;
+    }
+}
+
+.dashboard-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.control-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.control-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .control-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ai-chat-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.ai-chat-title h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.ai-chat-title p {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.image-slider {
+  width: 100%;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.slider-container {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+}
+
+.slider-container img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.password-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.features-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: var(--active-button-bg);
+  color: var(--active-button-text);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.features-button:hover {
+  opacity: 0.9;
+}
+
+.ai-chat-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  overflow-y: auto;
+}
+
+.ai-chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ai-chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ai-chat-header h1 {
+  font-size: 24px;
+  color: #fff;
+  margin: 0;
+}
+
+.ai-chat-header p {
+  font-size: 14px;
+  color: #ccc;
+  margin: 0;
+}
+
+.close-ai-chat {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.image-slider {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.slider-container {
+  display: flex;
+  gap: 20px;
+}
+
+.slider-container img {
+  width: auto;
+  height: 60vh;
+  object-fit: contain;
+}
+
+.password-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.password-prompt input,
+.password-prompt button {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.features-button {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 20px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#aiChatFrame {
+  width: 100%;
+  height: calc(100vh - 200px);
+  border: none;
+  border-radius: 10px;
+}
+
+@media (min-width: 1024px) {
+  .ai-chat-container {
+    padding: 40px;
+  }
+
+  #aiChatFrame {
+    height: calc(100vh - 240px);
+    min-height: 600px;
+  }
+
+  .ai-chat-header h1 {
+    font-size: 32px;
+  }
+
+  .ai-chat-header p {
+    font-size: 18px;
+  }
+
+  .features-button {
+    font-size: 18px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ai-chat-container {
+    padding: 10px;
+  }
+
+  .ai-chat-header h1 {
+    font-size: 20px;
+  }
+
+  .ai-chat-header p {
+    font-size: 12px;
+  }
+
+  .slider-container img {
+    height: 40vh;
+  }
+
+  #aiChatFrame {
+    height: calc(100vh - 150px);
+  }
+}
+
+/* Stili per i temi speciali */
+body.cyberpunk-theme .control-button,
+body.hacker-theme .control-button,
+body.vintage-theme .control-button,
+body.instagram-theme .control-button {
+  color: var(--text-color);
+}
+/* Stili per il dropdown dei siti */
+.sites-dropdown {
+    position: fixed;
+    top: 39px; /* Allineato con gli altri pulsanti in alto */
+    left: 24px; /* Spostato leggermente a destra */
+    z-index: 1000;
+}
+
+.sites-button {
+    background-color: var(--active-button-bg); /* Usa il colore blu attivo come gli altri pulsanti */
+    color: var(--active-button-text); /* Usa il colore del testo attivo */
+    padding: 8px 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sites-button:hover {
+    opacity: 0.9; /* Effetto hover leggero */
+}
+
+.sites-content {
+    display: none;
+    position: absolute;
+    background-color: var(--bg-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1001;
+    border-radius: 5px;
+    left: 0;
+    top: 100%;
+    margin-top: 5px;
+}
+
+.sites-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.3s;
+}
+
+.sites-content a:hover {
+    background-color: var(--active-button-bg);
+    color: var(--active-button-text);
+}
+
+.show {
+    display: block;
+}
+
+/* Stili per tema scuro */
+body.dark-theme .sites-button {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+}
+
+body.dark-theme .sites-content {
+    background-color: var(--bg-color);
+}
+
+body.dark-theme .sites-content a {
+    color: var(--text-color);
+}
+
+/* Stili per i temi speciali */
+body.cyberpunk-theme .sites-button,
+body.hacker-theme .sites-button,
+body.vintage-theme .sites-button,
+body.instagram-theme .sites-button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+}
+
+body.cyberpunk-theme .sites-content,
+body.hacker-theme .sites-content,
+body.vintage-theme .sites-content,
+body.instagram-theme .sites-content {
+    background-color: var(--bg-color);
+}
+
+body.cyberpunk-theme .sites-content a,
+body.hacker-theme .sites-content a,
+body.vintage-theme .sites-content a,
+body.instagram-theme .sites-content a {
+    color: var(--text-color);
+}
+
+Certamente! Ecco il codice aggiornato per implementare le nuove funzionalità richieste. Aggiungeremo i tre pulsanti nella pagina di inserimento della password.
+
+
+Sostituisci il codice dell'overlay della chat AI con questo:
+
+
+
+<div id="aiChatOverlay" class="ai-chat-overlay">
+  <div class="ai-chat-container">
+    <div class="ai-chat-header">
+      <h1>AI WebNobel & AI Driver4You</h1>
+      <p>La prima Intelligenza Artificiale della Vallecamonica</p>
+      <button id="closeAiChat" class="close-ai-chat">&times;</button>
+    </div>
+    
+   <div class="prompt-dropdown">
+  <button id="promptButton" class="prompt-button">Seleziona un Prompt</button>
+  <div id="promptList" class="prompt-list">
+    <div class="prompt-header">
+      <div id="promptCounter" class="prompt-counter"></div>
+      <input type="text" id="promptSearch" class="prompt-search" placeholder="Cerca prompt...">
+    </div>
+    <div class="prompt-categories">
+      <button class="category-button" data-category="all">Tutti</button>
+      <button class="category-button active" data-category="Driver4You">Driver4You</button>
+      <button class="category-button" data-category="All">All</button>
+      <button class="category-button" data-category="Lifestyle">Lifestyle</button>
+      <button class="category-button" data-category="GastronomiaACasaMia">Gastronomia a casa mia</button>
+      <button class="category-button" data-category="ViaggioDelGusto">Viaggio del gusto</button>
+      <button class="category-button" data-category="Guadagna">Guadagna</button>
+      <button class="category-button" data-category="DoctorNow">DoctorNow</button>
+    </div>
+    <div class="prompt-items">
+      <div class="prompt-item" data-category="Driver4You" data-prompt="Calcolo costi sposatamento pre-prenotazione.">Calcolo costi sposatamento pre-prenotazione.</div>
+      <div class="prompt-item" data-category="Driver4You" data-prompt="Stima tempi di sosta (es.visite ospedaliere, ristoranti)">Stima tempi di sosta (es.visite ospedaliere, ristoranti)</div>
+      <div class="prompt-item" data-category="Driver4You" data-prompt="Calcolo costo complessivo o suddiviso per passeggero">Calcolo costo complessivo o suddiviso per passeggero</div>
+      <div class="prompt-item" data-category="Driver4You" data-prompt="Voglio prenotare un car sharing per 02/02/25 ore 20.30 vieni a prenderci in 3 posti il abito a bienno. Un mio amico a Esine e uno a Berzo inferiore. Ci fermiamo a fare un aperitivo a lovere 1 ora e poi andiamo al Number per 00.30 vogliamo essere giù.  Calcola costo.">Voglio prenotare un car sharing per 02/02/25 ore 20.30 vieni a prenderci in 3 posti il abito a bienno. Un mio amico a Esine e uno a Berzo inferiore. Ci fermiamo a fare un aperitivo a lovere 1 ora e poi andiamo al Number per 00.30 vogliamo essere giù.  Calcola costo.</div>
+      <div class="prompt-item" data-category="Driver4You" data-prompt="Ciao, quanto costa fare aspettare un car sharing in macchina se vado a mangiare in uno dei ristoranti del servizio viaggio del gusto dell'Ai Driver4You? C'è un prezzo indicativo?">Ciao, quanto costa fare aspettare un car sharing in macchina se vado a mangiare in uno dei ristoranti del servizio viaggio del gusto dell'Ai Driver4You? C'è un prezzo indicativo?</div>
+      <div class="prompt-item" data-category="Driver4You" data-prompt="Ciao, voglio rilasciare una recensione al Car Sharing Zoro. Dove vado? Dammi il link">Ciao, voglio rilasciare una recensione al Car Sharing Zoro. Dove vado? Dammi il link</div>
+      <div class="prompt-item" data-category="All" data-prompt="Mi fai le lista dell'utente, dell'attività o azienda di tutto quello che possono fare con l'Ai WebNobel e le cose correlate?">Mi fai le lista dell'utente, dell'attività o azienda di tutto quello che possono fare con l'Ai WebNobel e le cose correlate?</div>
+      <div class="prompt-item" data-category="All" data-prompt="Ciao, cosa può fare l'utente e l'attività mi fai la lista completa?">Ciao, cosa può fare l'utente e l'attività mi fai la lista completa?</div>
+      <div class="prompt-item" data-category="Lifestyle" data-prompt="Cosa mi consigli oggi?">Cosa mi consigli oggi?</div>
+      <div class="prompt-item" data-category="GastronomiaACasaMia" data-prompt="Voglio ordinare cibo, a domicilio i Casoncelli e la torta di mele mi chiamo Marco Pacchiotti abito in a Darfo in via: Garibaldi 31 25043 me lo porti domani alle 11:45 a.m.">Voglio ordinare cibo, a domicilio i Casoncelli e la torta di mele mi chiamo Marco Pacchiotti abito in a Darfo in via: Garibaldi 31 25043 me lo porti domani alle 11:45 a.m.</div>
+      <div class="prompt-item" data-category="GastronomiaACasaMia" data-prompt="Ciao ci sono prodotti gastronomici?">Ciao ci sono prodotti gastronomici?</div>
+      <div class="prompt-item" data-category="ViaggioDelGusto" data-prompt="Voglio usare il servizio Viaggio del gusto, mi dici come funziona?">Voglio usare il servizio Viaggio del gusto, mi dici come funziona?</div>
+      <div class="prompt-item" data-category="ViaggioDelGusto" data-prompt="Mi porti al Ristorante Carmen. Destinazione Darfo. Indirizzo non lo so. Mi fermo 1 ora. Sono da solo. Non ho preferenze di veicolo. Parto dal municipio di Breno alle 20.30 giorno 01/02/25 vieni a prendermi li. Quanto costa? Voglio andata e ritorno">Mi porti al Ristorante Carmen. Destinazione Darfo. Indirizzo non lo so. Mi fermo 1 ora. Sono da solo. Non ho preferenze di veicolo. Parto dal municipio di Breno alle 20.30 giorno 01/02/25 vieni a prendermi li. Quanto costa? Voglio andata e ritorno</div>
+      <div class="prompt-item" data-category="ViaggioDelGusto" data-prompt="Voglio prenotare un car sharing per 2 persone per il 22/01/2025 abito a Esine, il Ristorante Animo è a Darfo, mi fermo 2 ore massimo. Quanto costa? Dimmi il prezzo singolo e complessivo per favore">Voglio prenotare un car sharing per 2 persone per il 22/01/2025 abito a Esine, il Ristorante Animo è a Darfo, mi fermo 2 ore massimo. Quanto costa? Dimmi il prezzo singolo e complessivo per favore</div>
+      <div class="prompt-item" data-category="Guadagna" data-prompt="Voglio diventare admin del canale di Artogne. Cosa devo fare? Come funziona è vero che posso guadagnare soldi?">Voglio diventare admin del canale di Artogne. Cosa devo fare? Come funziona è vero che posso guadagnare soldi?</div>
+      <div class="prompt-item" data-category="DoctorNow" data-prompt="Voglio usare il servizio DoctorNow voglio prenotare una visita dal mio medico di fiducia e vorrei anche prenotare sei farmaci. Abito a Berzo Demo">Voglio usare il servizio DoctorNow voglio prenotare una visita dal mio medico di fiducia e vorrei anche prenotare sei farmaci. Abito a Berzo Demo</div>
+    </div>
+  </div>
+</div>
+    
+    <div class="image-slider" id="loginSlider">
+      <div class="slider-container">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XkD24KGpTG2nYtcmo8BzuqpLmbxRSW.png" alt="WebNobel AI">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-D8uP41Rj8N2UOWr8XgSPBPUdy7H1K9.png" alt="Avatar Camuni">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-x4JhTdQS0DDn0sUpXbTDdupQYOVDKL.png" alt="DoctorNow">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-EAOLsq1JjiDSFFB8Jl66rv48Y4BfsK.png" alt="Driver4You">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-sudv3VOBTszTZe3R3YSdWccF1V2jdd.png" alt="FAQ">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ntxAYzYFnqjmMlPeYrBSUF6v4XNPre.png" alt="Bot">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1vuq4IpjmoVB7dfH6RRs4FDqZg0dPD.png" alt="Intrattenimento">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-DnbpqSsZj9u0l62trS7dF1FBxBEFGC.png" alt="Investitori">
+      </div>
+    </div>
+
+    <div id="passwordPrompt" class="password-prompt">
+      <input type="password" id="chatPassword" placeholder="Inserisci la password">
+      <button id="submitPassword">Accedi</button>
+    </div>
+
+    <div id="aiChatMessages" class="ai-chat-messages">
+      <button id="featuresButton" class="features-button">Cosa puoi fare con la nostra AI?</button>
+      
+      <div class="image-slider" id="featuresSlider" style="display: none;">
+        <div class="slider-container">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XkD24KGpTG2nYtcmo8BzuqpLmbxRSW.png" alt="WebNobel AI">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-D8uP41Rj8N2UOWr8XgSPBPUdy7H1K9.png" alt="Avatar Camuni">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-x4JhTdQS0DDn0sUpXbTDdupQYOVDKL.png" alt="DoctorNow">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-EAOLsq1JjiDSFFB8Jl66rv48Y4BfsK.png" alt="Driver4You">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-sudv3VOBTszTZe3R3YSdWccF1V2jdd.png" alt="FAQ">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ntxAYzYFnqjmMlPeYrBSUF6v4XNPre.png" alt="Bot">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1vuq4IpjmoVB7dfH6RRs4FDqZg0dPD.png" alt="Intrattenimento">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-DnbpqSsZj9u0l62trS7dF1FBxBEFGC.png" alt="Investitori">
+        </div>
+      </div>
+      <iframe id="aiChatFrame" style="display: none;" src="https://aiwebnobel.carrd.co/"></iframe>
+    </div>
+  </div>
+</div>
+
+CSS:
+Aggiungi questi stili al tuo blocco `<style>` esistente:
+
+```css
+.password-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.password-prompt input {
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 200px;
+  border: 1px solid var(--card-border);
+  border-radius: 5px;
+}
+
+.password-prompt button {
+  padding: 10px 20px;
+  background-color: var(--active-button-bg);
+  color: var(--active-button-text);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.additional-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.option-button {
+  padding: 10px 20px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  width: 200px;
+  transition: background-color 0.3s ease;
+}
+
+.option-button:hover {
+  background-color: var(--active-button-bg);
+  color: var(--active-button-text);
+}
+
+.prompt-dropdown {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto;
+}
+
+.prompt-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.prompt-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.prompt-header {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.prompt-counter {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.prompt-search {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.prompt-categories {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.category-button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.category-button.active {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.prompt-items {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.prompt-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.prompt-item:hover {
+  background-color: #f0f0f0;
+}
+
+@media (min-width: 1024px) {
+  .prompt-dropdown {
+    max-width: 400px;
+  }
+
+  .prompt-button {
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  .prompt-items {
+    max-height: 400px;
+  }
+
+  .prompt-item {
+    padding: 15px;
+    font-size: 16px;
+  }
+}
+/* Stili per la nuova interfaccia impostazioni */
+.settings-modal {
+    background-color: #fff;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 95%;
+    padding: 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    max-height: 95vh; /* Aumentato da 90vh a 95vh */
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 65px 20px;
+    padding: 38px; /* Ridotto da 65px a 20px */
+    border-bottom: 1px solid #eee;
+}
+
+.settings-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.settings-body {
+    padding: 15px 20px;
+    padding: 20px;
+}
+
+.settings-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings-item:last-child {
+    border-bottom: none;
+}
+
+.settings-item label {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.select-wrapper {
+    position: relative;
+    min-width: 120px;
+}
+
+.settings-select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.select-wrapper::after {
+    content: "▼";
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.layout-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.layout-button {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+}
+
+.layout-button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.layout-icon {
+    font-size: 16px;
+}
+
+.column-slider {
+    width: 100%;
+    margin-top: 10px;
+    height: 5px;
+    background: #ddd;
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 5px;
+}
+
+.column-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+}
+
+.column-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+    border: none;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+    background-color: #007bff;
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+
+/* Stili per tema scuro */
+body.dark-theme .settings-modal {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+body.dark-theme .settings-header {
+    border-bottom-color: #333;
+}
+
+body.dark-theme .settings-item {
+    border-bottom-color: #333;
+}
+
+body.dark-theme .settings-select {
+    background-color: #333;
+    color: #fff;
+    border-color: #444;
+}
+
+body.dark-theme .layout-button {
+    background-color: #333;
+    color: #ddd;
+    border-color: #444;
+}
+
+body.dark-theme .layout-button.active {
+    background-color: #00a86b;
+    color: white;
+    border-color: #00a86b;
+}
+
+body.dark-theme .column-slider {
+    background: #444;
+}
+
+body.dark-theme .column-slider::-webkit-slider-thumb {
+    background: #00a86b;
+}
+
+body.dark-theme .column-slider::-moz-range-thumb {
+    background: #00a86b;
+}
+
+body.dark-theme .toggle-slider {
+    background-color: #444;
+}
+
+body.dark-theme input:checked + .toggle-slider {
+    background-color: #00a86b;
+}
+
+/* Stili per i temi speciali */
+body.cyberpunk-theme .settings-modal,
+body.hacker-theme .settings-modal,
+body.vintage-theme .settings-modal,
+body.instagram-theme .settings-modal {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+body.cyberpunk-theme .settings-header,
+body.hacker-theme .settings-header,
+body.vintage-theme .settings-header,
+body.instagram-theme .settings-header {
+    border-bottom-color: var(--card-border);
+}
+
+body.cyberpunk-theme .settings-item,
+body.hacker-theme .settings-item,
+body.vintage-theme .settings-item,
+body.instagram-theme .settings-item {
+    border-bottom-color: var(--card-border);
+}
+
+body.cyberpunk-theme .settings-select,
+body.hacker-theme .settings-select,
+body.vintage-theme .settings-select,
+body.instagram-theme .settings-select {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border-color: var(--card-border);
+}
+
+body.cyberpunk-theme .layout-button,
+body.hacker-theme .layout-button,
+body.vintage-theme .layout-button,
+body.instagram-theme .layout-button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border-color: var(--card-border);
+}
+
+body.cyberpunk-theme .layout-button.active,
+body.hacker-theme .layout-button.active,
+body.vintage-theme .layout-button.active,
+body.instagram-theme .layout-button.active {
+    background-color: var(--active-button-bg);
+    color: var(--active-button-text);
+    border-color: var(--active-button-bg);
+}
+
+body.cyberpunk-theme .column-slider,
+body.hacker-theme .column-slider,
+body.vintage-theme .column-slider,
+body.instagram-theme .column-slider {
+    background: var(--card-border);
+}
+
+body.cyberpunk-theme .column-slider::-webkit-slider-thumb,
+body.hacker-theme .column-slider::-webkit-slider-thumb,
+body.vintage-theme .column-slider::-webkit-slider-thumb,
+body.instagram-theme .column-slider::-webkit-slider-thumb {
+    background: var(--active-button-bg);
+}
+
+body.cyberpunk-theme .column-slider::-moz-range-thumb,
+body.hacker-theme .column-slider::-moz-range-thumb,
+body.vintage-theme .column-slider::-moz-range-thumb,
+body.instagram-theme .column-slider::-moz-range-thumb {
+    background: var(--active-button-bg);
+}
+
+body.cyberpunk-theme .toggle-slider,
+body.hacker-theme .toggle-slider,
+body.vintage-theme .toggle-slider,
+body.instagram-theme .toggle-slider {
+    background-color: var(--button-bg);
+}
+
+body.cyberpunk-theme input:checked + .toggle-slider,
+body.hacker-theme input:checked + .toggle-slider,
+body.vintage-theme input:checked + .toggle-slider,
+body.instagram-theme input:checked + .toggle-slider {
+    background-color: var(--active-button-bg);
+}
+/* Stili per la funzionalità Nascondi */
+.hide-categories-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--bg-color);
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    padding: 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    overflow: hidden;
+    max-height: 75vh; /* Aumentato leggermente */
+    overflow-y: auto;
+}
+
+.hide-categories-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.hide-categories-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.hide-categories-content {
+    padding: 15px 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.hide-categories-info {
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.hide-categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hide-category-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--button-bg);
+    cursor: pointer;
+    transition: opacity 0.3s, background-color 0.3s;
+    opacity: 0.6;
+}
+
+.hide-category-item.hidden {
+    opacity: 1;
+    background-color: var(--active-button-bg);
+    color: var(--active-button-text);
+}
+
+.hide-category-icon {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.hide-category-name {
+    flex-grow: 1;
+}
+
+/* Stili per tema scuro */
+body.dark-theme .hide-categories-container {
+    background-color: #1a1a1a;
+}
+
+body.dark-theme .hide-categories-header {
+    border-bottom-color: #333;
+}
+
+body.dark-theme .hide-categories-info {
+    color: #ddd;
+}
+
+/* Stili per i temi speciali */
+body.cyberpunk-theme .hide-categories-container,
+body.hacker-theme .hide-categories-container,
+body.vintage-theme .hide-categories-container,
+body.instagram-theme .hide-categories-container {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+body.cyberpunk-theme .hide-categories-header,
+body.hacker-theme .hide-categories-header,
+body.vintage-theme .hide-categories-header,
+body.instagram-theme .hide-categories-header {
+    border-bottom-color: var(--card-border);
+}
+
+body.cyberpunk-theme .hide-category-item,
+body.hacker-theme .hide-category-item,
+body.vintage-theme .hide-category-item,
+body.instagram-theme .hide-category-item {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+}
+
+body.cyberpunk-theme .hide-category-item.hidden,
+body.hacker-theme .hide-category-item.hidden,
+body.vintage-theme .hide-category-item.hidden,
+body.instagram-theme .hide-category-item.hidden {
+    background-color: var(--active-button-bg);
+    color: var(--active-button-text);
+}
+    </style>
+</head>
+<!-- 1. Aggiungi il pulsante 🔑 prima del pulsante AI -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Trova il pulsante AI
+  const aiButton = document.getElementById('aiChatButton');
+  if (aiButton) {
+    // Crea il pulsante 🔑
+    const keyButton = document.createElement('button');
+    keyButton.id = 'saasButton';
+    keyButton.className = 'control-button';
+    keyButton.textContent = '🔑';
+    
+    // Inserisci il pulsante 🔑 prima del pulsante AI
+    aiButton.parentNode.insertBefore(keyButton, aiButton);
+    
+    // Aggiungi l'event listener per aprire l'interfaccia SaaS
+    keyButton.addEventListener('click', function() {
+      document.getElementById('saasOverlay').style.display = 'block';
+      loadSaasData();
+    });
+  }
+});
+
+// 2. Funzioni per l'interfaccia SaaS
+// Inizializza le variabili globali
+let saasCategories = [];
+let saasProducts = [];
+
+// Carica i dati iniziali
+function loadSaasData() {
+  // Carica le categorie esistenti
+  saasCategories = [...categories];
+  
+  // Carica i prodotti esistenti
+  saasProducts = [...jsonData];
+  
+  // Aggiorna le interfacce
+  loadMainButtonLinks();
+  loadSaasCategories();
+  loadSaasProducts();
+  
+  // Mostra il primo tab
+  showSaasTab('main-button-tab');
+}
+
+// Funzione per mostrare un tab specifico
+function showSaasTab(tabId) {
+  // Nascondi tutti i tab
+  document.querySelectorAll('.saas-tab-content').forEach(tab => {
+    tab.style.display = 'none';
+  });
+  
+  // Rimuovi la classe active da tutti i pulsanti
+  document.querySelectorAll('.saas-tab-button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  // Mostra il tab selezionato
+  document.getElementById(tabId).style.display = 'block';
+  
+  // Attiva il pulsante corrispondente
+  document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+}
+
+// Funzione per chiudere l'interfaccia SaaS
+function closeSaas() {
+  document.getElementById('saasOverlay').style.display = 'none';
+}
+
+// Funzioni per il pulsante principale
+function loadMainButtonLinks() {
+  const linksContainer = document.getElementById('main-button-links');
+  linksContainer.innerHTML = '';
+  
+  const sitesContent = document.getElementById('sitesContent');
+  if (sitesContent) {
+    const links = sitesContent.querySelectorAll('a');
+    
+    links.forEach((link, index) => {
+      const linkItem = document.createElement('div');
+      linkItem.className = 'saas-item';
+      linkItem.innerHTML = `
+        <div class="saas-item-info">
+          <strong>${link.textContent}</strong>
+          <div>${link.href}</div>
+        </div>
+        <div class="saas-item-actions">
+          <button onclick="editMainLink(${index})">Modifica</button>
+          <button onclick="removeMainLink(${index})">Rimuovi</button>
+        </div>
+      `;
+      linksContainer.appendChild(linkItem);
+    });
+  }
+}
+
+function addMainLink() {
+  const linkText = document.getElementById('main-link-text').value.trim();
+  const linkUrl = document.getElementById('main-link-url').value.trim();
+  
+  if (linkText && linkUrl) {
+    const sitesContent = document.getElementById('sitesContent');
+    if (sitesContent) {
+      const newLink = document.createElement('a');
+      newLink.href = linkUrl;
+      newLink.target = '_blank';
+      newLink.textContent = linkText;
+      sitesContent.appendChild(newLink);
+      
+      // Aggiorna la visualizzazione
+      loadMainButtonLinks();
+      
+      // Pulisci i campi
+      document.getElementById('main-link-text').value = '';
+      document.getElementById('main-link-url').value = '';
+    }
+  } else {
+    alert('Inserisci sia il testo che l\'URL del link');
+  }
+}
+
+function editMainLink(index) {
+  const sitesContent = document.getElementById('sitesContent');
+  if (sitesContent) {
+    const links = sitesContent.querySelectorAll('a');
+    const link = links[index];
+    
+    const newText = prompt('Modifica il testo del link:', link.textContent);
+    if (newText !== null) {
+      const newUrl = prompt('Modifica l\'URL del link:', link.href);
+      if (newUrl !== null) {
+        link.textContent = newText;
+        link.href = newUrl;
+        
+        // Aggiorna la visualizzazione
+        loadMainButtonLinks();
+      }
+    }
+  }
+}
+
+function removeMainLink(index) {
+  if (confirm('Sei sicuro di voler rimuovere questo link?')) {
+    const sitesContent = document.getElementById('sitesContent');
+    if (sitesContent) {
+      const links = sitesContent.querySelectorAll('a');
+      links[index].remove();
+      
+      // Aggiorna la visualizzazione
+      loadMainButtonLinks();
+    }
+  }
+}
+
+// Funzioni per le categorie
+function loadSaasCategories() {
+  const categoriesContainer = document.getElementById('categories-list');
+  categoriesContainer.innerHTML = '';
+  
+  // Aggiorna anche il select per i prodotti
+  const categorySelect = document.getElementById('product-category');
+  categorySelect.innerHTML = '';
+  
+  saasCategories.forEach((category, index) => {
+    // Aggiungi alla lista delle categorie
+    const categoryItem = document.createElement('div');
+    categoryItem.className = 'saas-item';
+    categoryItem.innerHTML = `
+      <div class="saas-item-info">
+        <strong>${category}</strong>
+        <div>Prodotti: ${countProductsInCategory(category)}</div>
+      </div>
+      <div class="saas-item-actions">
+        <button onclick="editCategory(${index})">Modifica</button>
+        <button onclick="removeCategory(${index})">Rimuovi</button>
+      </div>
+    `;
+    categoriesContainer.appendChild(categoryItem);
+    
+    // Aggiungi al select per i prodotti
+    const option = document.createElement('option');
+    option.value = category;
+    option.textContent = category;
+    categorySelect.appendChild(option);
+  });
+}
+
+function countProductsInCategory(category) {
+  return saasProducts.filter(product => product.Categoria === category).length;
+}
+
+function addCategory() {
+  const categoryName = document.getElementById('category-name').value.trim();
+  
+  if (categoryName) {
+    if (!saasCategories.includes(categoryName)) {
+      saasCategories.push(categoryName);
+      categories.push(categoryName);
+      
+      // Aggiorna la visualizzazione
+      loadSaasCategories();
+      
+      // Pulisci il campo
+      document.getElementById('category-name').value = '';
+      
+      // Aggiorna l'interfaccia principale
+      updateMainCategories();
+      updateFilterButtons();
+    } else {
+      alert('Questa categoria esiste già');
+    }
+  } else {
+    alert('Inserisci il nome della categoria');
+  }
+}
+
+function editCategory(index) {
+  const oldCategory = saasCategories[index];
+  const newCategory = prompt('Modifica il nome della categoria:', oldCategory);
+  
+  if (newCategory !== null && newCategory.trim() !== '') {
+    if (!saasCategories.includes(newCategory) || newCategory === oldCategory) {
+      // Aggiorna la categoria
+      saasCategories[index] = newCategory;
+      
+      // Aggiorna anche la categoria nell'array globale
+      const globalIndex = categories.indexOf(oldCategory);
+      if (globalIndex !== -1) {
+        categories[globalIndex] = newCategory;
+      }
+      
+      // Aggiorna anche i prodotti con questa categoria
+      saasProducts.forEach(product => {
+        if (product.Categoria === oldCategory) {
+          product.Categoria = newCategory;
+        }
+      });
+      
+      jsonData.forEach(item => {
+        if (item.Categoria === oldCategory) {
+          item.Categoria = newCategory;
+        }
+      });
+      
+      // Aggiorna la visualizzazione
+      loadSaasCategories();
+      loadSaasProducts();
+      
+      // Aggiorna l'interfaccia principale
+      updateMainCategories();
+      updateFilterButtons();
+      updateDisplay();
+    } else {
+      alert('Questa categoria esiste già');
+    }
+  }
+}
+
+function removeCategory(index) {
+  const category = saasCategories[index];
+  
+  if (confirm(`Sei sicuro di voler rimuovere la categoria "${category}"? Tutti i prodotti in questa categoria verranno rimossi.`)) {
+    // Rimuovi i prodotti in questa categoria
+    saasProducts = saasProducts.filter(product => product.Categoria !== category);
+    jsonData = jsonData.filter(item => item.Categoria !== category);
+    
+    // Rimuovi la categoria
+    saasCategories.splice(index, 1);
+    
+    // Rimuovi anche la categoria dall'array globale
+    const globalIndex = categories.indexOf(category);
+    if (globalIndex !== -1) {
+      categories.splice(globalIndex, 1);
+    }
+    
+    // Aggiorna la visualizzazione
+    loadSaasCategories();
+    loadSaasProducts();
+    
+    // Aggiorna l'interfaccia principale
+    updateMainCategories();
+    updateFilterButtons();
+    updateDisplay();
+    updateCounters();
+  }
+}
+
+// Funzioni per i prodotti
+function loadSaasProducts() {
+  const productsContainer = document.getElementById('products-list');
+  productsContainer.innerHTML = '';
+  
+  saasProducts.forEach((product, index) => {
+    const productItem = document.createElement('div');
+    productItem.className = 'saas-item';
+    productItem.innerHTML = `
+      <div class="saas-item-info">
+        <strong>${product.Nome}</strong>
+        <div>Categoria: ${product.Categoria}</div>
+      </div>
+      <div class="saas-item-actions">
+        <button onclick="editProduct(${index})">Modifica</button>
+        <button onclick="removeProduct(${index})">Rimuovi</button>
+      </div>
+    `;
+    productsContainer.appendChild(productItem);
+  });
+}
+
+function addProduct() {
+  const productName = document.getElementById('product-name').value.trim();
+  const productCategory = document.getElementById('product-category').value;
+  const productImageUrl = document.getElementById('product-image').value.trim();
+  const productUrl = document.getElementById('product-url').value.trim();
+  
+  if (productName && productCategory && productImageUrl && productUrl) {
+    // Crea il nuovo prodotto
+    const newProduct = {
+      Nome: productName,
+      Categoria: productCategory,
+      URLFoto: productImageUrl,
+      URL: productUrl
+    };
+    
+    // Aggiungi il prodotto agli array
+    saasProducts.push(newProduct);
+    jsonData.push(newProduct);
+    
+    // Aggiorna la visualizzazione
+    loadSaasProducts();
+    
+    // Pulisci i campi
+    document.getElementById('product-name').value = '';
+    document.getElementById('product-image').value = '';
+    document.getElementById('product-url').value = '';
+    
+    // Aggiorna l'interfaccia principale
+    updateDisplay();
+    updateCounters();
+  } else {
+    alert('Compila tutti i campi');
+  }
+}
+
+function editProduct(index) {
+  const product = saasProducts[index];
+  
+  const newName = prompt('Modifica il nome del prodotto:', product.Nome);
+  if (newName !== null) {
+    const newCategory = prompt('Modifica la categoria (opzioni: ' + saasCategories.join(', ') + '):', product.Categoria);
+    if (newCategory !== null && saasCategories.includes(newCategory)) {
+      const newImageUrl = prompt('Modifica l\'URL dell\'immagine:', product.URLFoto);
+      if (newImageUrl !== null) {
+        const newUrl = prompt('Modifica l\'URL del collegamento:', product.URL);
+        if (newUrl !== null) {
+          // Aggiorna il prodotto
+          product.Nome = newName;
+          product.Categoria = newCategory;
+          product.URLFoto = newImageUrl;
+          product.URL = newUrl;
+          
+          // Trova e aggiorna anche il prodotto nell'array globale
+          const globalProduct = jsonData.find(item => 
+            item.Nome === product.Nome && 
+            item.URLFoto === product.URLFoto && 
+            item.URL === product.URL
+          );
+          
+          if (globalProduct) {
+            globalProduct.Nome = newName;
+            globalProduct.Categoria = newCategory;
+            globalProduct.URLFoto = newImageUrl;
+            globalProduct.URL = newUrl;
+          }
+          
+          // Aggiorna la visualizzazione
+          loadSaasProducts();
+          
+          // Aggiorna l'interfaccia principale
+          updateDisplay();
+        }
+      }
+    } else {
+      alert('Categoria non valida');
+    }
+  }
+}
+
+function removeProduct(index) {
+  const product = saasProducts[index];
+  
+  if (confirm('Sei sicuro di voler rimuovere questo prodotto?')) {
+    // Rimuovi il prodotto dall'array locale
+    saasProducts.splice(index, 1);
+    
+    // Trova e rimuovi anche il prodotto dall'array globale
+    const globalIndex = jsonData.findIndex(item => 
+      item.Nome === product.Nome && 
+      item.Categoria === product.Categoria && 
+      item.URLFoto === product.URLFoto && 
+      item.URL === product.URL
+    );
+    
+    if (globalIndex !== -1) {
+      jsonData.splice(globalIndex, 1);
+    }
+    
+    // Aggiorna la visualizzazione
+    loadSaasProducts();
+    
+    // Aggiorna l'interfaccia principale
+    updateDisplay();
+    updateCounters();
+  }
+}
+
+// Funzione per esportare il codice HTML
+function exportHtmlCode() {
+  try {
+    // Ottieni il codice HTML completo
+    const htmlContent = document.documentElement.outerHTML;
+    
+    // Metodo moderno per copiare negli appunti
+    if (navigator.clipboard && window.isSecureContext) {
+      // Usa l'API Clipboard per ambienti sicuri
+      navigator.clipboard.writeText(htmlContent)
+        .then(() => {
+          alert('Il codice HTML è stato copiato negli appunti. Puoi incollarlo dove preferisci.');
+        })
+        .catch(err => {
+          console.error('Errore durante la copia negli appunti:', err);
+          fallbackCopyMethod(htmlContent);
+        });
+    } else {
+      // Usa il metodo di fallback per ambienti non sicuri
+      fallbackCopyMethod(htmlContent);
+    }
+  } catch (err) {
+    console.error('Errore durante l\'esportazione del codice:', err);
+    alert('Si è verificato un errore durante l\'esportazione del codice HTML.');
+  }
+}
+
+// Metodo di fallback per copiare negli appunti
+function fallbackCopyMethod(text) {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';  // Evita di scorrere la pagina
+  textarea.style.opacity = '0';       // Rendi invisibile
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  
+  try {
+    const successful = document.execCommand('copy');
+    if (successful) {
+      alert('Il codice HTML è stato copiato negli appunti. Puoi incollarlo dove preferisci.');
+    } else {
+      alert('Non è stato possibile copiare il codice negli appunti. Prova a usare un browser diverso.');
+    }
+  } catch (err) {
+    console.error('Errore durante la copia negli appunti:', err);
+    alert('Non è stato possibile copiare il codice negli appunti. Prova a usare un browser diverso.');
+  }
+  
+  document.body.removeChild(textarea);
+}
+</script>
+
+<!-- 3. Aggiungi l'interfaccia SaaS -->
+<div id="saasOverlay" class="overlay" style="display: none;">
+  <div class="overlay-content">
+    <button class="close-button" onclick="closeSaas()">&times;</button>
+    <h2>Interfaccia SaaS</h2>
+    
+    <div class="saas-tabs">
+      <button class="saas-tab-button active" data-tab="main-button-tab" onclick="showSaasTab('main-button-tab')">Pulsante Principale</button>
+      <button class="saas-tab-button" data-tab="categories-tab" onclick="showSaasTab('categories-tab')">Aggiungi Categoria</button>
+      <button class="saas-tab-button" data-tab="products-tab" onclick="showSaasTab('products-tab')">Aggiungi Prodotto</button>
+    </div>
+    
+    <div id="main-button-tab" class="saas-tab-content">
+      <h3>Gestisci Pulsante Principale WebNobel</h3>
+      <div id="main-button-links"></div>
+      <div class="saas-form">
+        <input type="text" id="main-link-text" placeholder="Testo del link">
+        <input type="text" id="main-link-url" placeholder="URL del link">
+        <button onclick="addMainLink()">Aggiungi Link</button>
+      </div>
+    </div>
+    
+    <div id="categories-tab" class="saas-tab-content" style="display: none;">
+      <h3>Gestisci Categorie</h3>
+      <div id="categories-list"></div>
+      <div class="saas-form">
+        <input type="text" id="category-name" placeholder="Nome categoria">
+        <button onclick="addCategory()">Aggiungi Categoria</button>
+      </div>
+    </div>
+    
+    <div id="products-tab" class="saas-tab-content" style="display: none;">
+      <h3>Gestisci Prodotti</h3>
+      <div id="products-list"></div>
+      <div class="saas-form">
+        <input type="text" id="product-name" placeholder="Nome prodotto">
+        <select id="product-category"></select>
+        <input type="text" id="product-image" placeholder="URL immagine">
+        <input type="text" id="product-url" placeholder="URL collegamento">
+        <button onclick="addProduct()">Aggiungi Prodotto</button>
+      </div>
+    </div>
+    
+    <div class="saas-footer">
+<button onclick="exportHtmlCode()" class="export-button">Copia Codice HTML</button>    </div>
+  </div>
+</div>
+
+<!-- 4. Aggiungi gli stili CSS -->
+<style>
+.saas-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.saas-tab-button {
+  padding: 10px 15px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.saas-tab-button:hover, .saas-tab-button.active {
+  background-color: var(--active-button-bg);
+  color: var(--active-button-text);
+}
+
+.saas-tab-content {
+  margin: 20px 0;
+}
+
+.saas-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.saas-form input, .saas-form select {
+  padding: 10px;
+  border: 1px solid var(--card-border);
+  border-radius: 5px;
+}
+
+.saas-form button {
+  align-self: flex-start;
+}
+
+.saas-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--card-border);
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.saas-item-info {
+  flex-grow: 1;
+}
+
+.saas-item-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.saas-footer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.export-button {
+  padding: 12px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.export-button:hover {
+  background-color: #218838;
+}
+</style>
+    <body>
+      
+
+
+
+<div id="aiChatOverlay" class="ai-chat-overlay">
+  <div class="ai-chat-container">
+    <div class="ai-chat-header">
+      <h1>AI WebNobel & AI Driver4You</h1>
+      <p>La prima Intelligenza Artificiale della Vallecamonica</p>
+      <button id="closeAiChat" class="close-ai-chat">&times;</button>
+    </div>
+    
+    <div class="prompt-dropdown">
+  <button id="promptButton" class="prompt-button">Seleziona un Prompt</button>
+  <div id="promptList" class="prompt-list">
+    <div class="prompt-header">
+      <div id="promptCounter" class="prompt-counter"></div>
+      <input type="text" id="promptSearch" class="prompt-search" placeholder="Cerca prompt...">
+    </div>
+    <div class="prompt-categories">
+      <button class="category-button" data-category="all">Tutti</button>
+      <button class="category-button active" data-category="Driver4You">Driver4You</button>
+      <button class="category-button" data-category="All">All</button>
+      <button class="category-button" data-category="Lifestyle">Lifestyle</button>
+      <button class="category-button" data-category="GastronomiaACasaMia">Gastronomia a casa mia</button>
+      <button class="category-button" data-category="ViaggioDelGusto">Viaggio del gusto</button>
+      <button class="category-button" data-category="Guadagna">Guadagna</button>
+      <button class="category-button" data-category="DoctorNow">DoctorNow</button>
+    </div>
+    <div class="prompt-items">
+      <div class="prompt-item" data-category="Driver4You" data-prompt="Calcolo costi sposatamento pre-prenotazione.">Calcolo costi sposatamento pre-prenotazione.</div>
+      <div class="prompt-item" data-category="Driver4You" data-prompt="Stima tempi di sosta (es.visite ospedaliere, ristoranti)">Stima tempi di sosta (es.visite ospedaliere, ristoranti)</div>
+      <div class="prompt-item" data-category="Driver4You" data-prompt="Calcolo costo complessivo o suddiviso per passeggero">Calcolo costo complessivo o suddiviso per passeggero</div>
+      <div class="prompt-item" data-category="Driver4You" data-prompt="Voglio prenotare un car sharing per 02/02/25 ore 20.30 vieni a prenderci in 3 posti il abito a bienno. Un mio amico a Esine e uno a Berzo inferiore. Ci fermiamo a fare un aperitivo a lovere 1 ora e poi andiamo al Number per 00.30 vogliamo essere giù.  Calcola costo.">Voglio prenotare un car sharing per 02/02/25 ore 20.30 vieni a prenderci in 3 posti il abito a bienno. Un mio amico a Esine e uno a Berzo inferiore. Ci fermiamo a fare un aperitivo a lovere 1 ora e poi andiamo al Number per 00.30 vogliamo essere giù.  Calcola costo.</div>
+      <div class="prompt-item" data-category="Driver4You" data-prompt="Ciao, quanto costa fare aspettare un car sharing in macchina se vado a mangiare in uno dei ristoranti del servizio viaggio del gusto dell'Ai Driver4You? C'è un prezzo indicativo?">Ciao, quanto costa fare aspettare un car sharing in macchina se vado a mangiare in uno dei ristoranti del servizio viaggio del gusto dell'Ai Driver4You? C'è un prezzo indicativo?</div>
+      <div class="prompt-item" data-category="Driver4You" data-prompt="Ciao, voglio rilasciare una recensione al Car Sharing Zoro. Dove vado? Dammi il link">Ciao, voglio rilasciare una recensione al Car Sharing Zoro. Dove vado? Dammi il link</div>
+      <div class="prompt-item" data-category="All" data-prompt="Mi fai le lista dell'utente, dell'attività o azienda di tutto quello che possono fare con l'Ai WebNobel e le cose correlate?">Mi fai le lista dell'utente, dell'attività o azienda di tutto quello che possono fare con l'Ai WebNobel e le cose correlate?</div>
+      <div class="prompt-item" data-category="All" data-prompt="Ciao, cosa può fare l'utente e l'attività mi fai la lista completa?">Ciao, cosa può fare l'utente e l'attività mi fai la lista completa?</div>
+      <div class="prompt-item" data-category="Lifestyle" data-prompt="Cosa mi consigli oggi?">Cosa mi consigli oggi?</div>
+      <div class="prompt-item" data-category="GastronomiaACasaMia" data-prompt="Voglio ordinare cibo, a domicilio i Casoncelli e la torta di mele mi chiamo Marco Pacchiotti abito in a Darfo in via: Garibaldi 31 25043 me lo porti domani alle 11:45 a.m.">Voglio ordinare cibo, a domicilio i Casoncelli e la torta di mele mi chiamo Marco Pacchiotti abito in a Darfo in via: Garibaldi 31 25043 me lo porti domani alle 11:45 a.m.</div>
+      <div class="prompt-item" data-category="GastronomiaACasaMia" data-prompt="Ciao ci sono prodotti gastronomici?">Ciao ci sono prodotti gastronomici?</div>
+      <div class="prompt-item" data-category="ViaggioDelGusto" data-prompt="Voglio usare il servizio Viaggio del gusto, mi dici come funziona?">Voglio usare il servizio Viaggio del gusto, mi dici come funziona?</div>
+      <div class="prompt-item" data-category="ViaggioDelGusto" data-prompt="Mi porti al Ristorante Carmen. Destinazione Darfo. Indirizzo non lo so. Mi fermo 1 ora. Sono da solo. Non ho preferenze di veicolo. Parto dal municipio di Breno alle 20.30 giorno 01/02/25 vieni a prendermi li. Quanto costa? Voglio andata e ritorno">Mi porti al Ristorante Carmen. Destinazione Darfo. Indirizzo non lo so. Mi fermo 1 ora. Sono da solo. Non ho preferenze di veicolo. Parto dal municipio di Breno alle 20.30 giorno 01/02/25 vieni a prendermi li. Quanto costa? Voglio andata e ritorno</div>
+      <div class="prompt-item" data-category="ViaggioDelGusto" data-prompt="Voglio prenotare un car sharing per 2 persone per il 22/01/2025 abito a Esine, il Ristorante Animo è a Darfo, mi fermo 2 ore massimo. Quanto costa? Dimmi il prezzo singolo e complessivo per favore">Voglio prenotare un car sharing per 2 persone per il 22/01/2025 abito a Esine, il Ristorante Animo è a Darfo, mi fermo 2 ore massimo. Quanto costa? Dimmi il prezzo singolo e complessivo per favore</div>
+      <div class="prompt-item" data-category="Guadagna" data-prompt="Voglio diventare admin del canale di Artogne. Cosa devo fare? Come funziona è vero che posso guadagnare soldi?">Voglio diventare admin del canale di Artogne. Cosa devo fare? Come funziona è vero che posso guadagnare soldi?</div>
+      <div class="prompt-item" data-category="DoctorNow" data-prompt="Voglio usare il servizio DoctorNow voglio prenotare una visita dal mio medico di fiducia e vorrei anche prenotare sei farmaci. Abito a Berzo Demo">Voglio usare il servizio DoctorNow voglio prenotare una visita dal mio medico di fiducia e vorrei anche prenotare sei farmaci. Abito a Berzo Demo</div>
+    </div>
+  </div>
+</div>
+    
+    <div class="image-slider" id="loginSlider">
+      <div class="slider-container">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XkD24KGpTG2nYtcmo8BzuqpLmbxRSW.png" alt="WebNobel AI">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-D8uP41Rj8N2UOWr8XgSPBPUdy7H1K9.png" alt="Avatar Camuni">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-x4JhTdQS0DDn0sUpXbTDdupQYOVDKL.png" alt="DoctorNow">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-EAOLsq1JjiDSFFB8Jl66rv48Y4BfsK.png" alt="Driver4You">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-sudv3VOBTszTZe3R3YSdWccF1V2jdd.png" alt="FAQ">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ntxAYzYFnqjmMlPeYrBSUF6v4XNPre.png" alt="Bot">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1vuq4IpjmoVB7dfH6RRs4FDqZg0dPD.png" alt="Intrattenimento">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-DnbpqSsZj9u0l62trS7dF1FBxBEFGC.png" alt="Investitori">
+      </div>
+    </div>
+
+    <div id="passwordPrompt" class="password-prompt">
+      <input type="password" id="chatPassword" placeholder="Inserisci la password">
+      <button id="submitPassword">Accedi</button>
+    </div>
+
+    <div id="aiChatMessages" class="ai-chat-messages">
+      <button id="featuresButton" class="features-button">Cosa puoi fare con la nostra AI?</button>
+      
+      <div class="image-slider" id="featuresSlider" style="display: none;">
+        <div class="slider-container">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XkD24KGpTG2nYtcmo8BzuqpLmbxRSW.png" alt="WebNobel AI">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-D8uP41Rj8N2UOWr8XgSPBPUdy7H1K9.png" alt="Avatar Camuni">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-x4JhTdQS0DDn0sUpXbTDdupQYOVDKL.png" alt="DoctorNow">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-EAOLsq1JjiDSFFB8Jl66rv48Y4BfsK.png" alt="Driver4You">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-sudv3VOBTszTZe3R3YSdWccF1V2jdd.png" alt="FAQ">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ntxAYzYFnqjmMlPeYrBSUF6v4XNPre.png" alt="Bot">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1vuq4IpjmoVB7dfH6RRs4FDqZg0dPD.png" alt="Intrattenimento">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-DnbpqSsZj9u0l62trS7dF1FBxBEFGC.png" alt="Investitori">
+        </div>
+      </div>
+      <iframe id="aiChatFrame" style="display: none;" src="https://aiwebnobel.carrd.co/"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="dashboard-controls">
+
+</div>
+  <div class="dashboard-header">
+    <div class="quote-container">
+        <div class="quote"></div>
+    </div>
+    <h1 class="dashboard-title">WebNobel</h1>
+    <div class="dashboard-controls">
+  <button id="aiChatButton" class="control-button">AI</button>
+  <button id="settingsButton" onclick="openSettings()">⚙️</button>
+</div>
+</div>
+
+        <div class="dashboard-counter" id="homeCounter"></div>
+
+        <div class="dashboard-categories" id="mainCategories"></div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" placeholder="Cerca" id="searchInput">
+    </div>
+
+    <div id="cardGrid" class="grid"></div>
+
+    <div id="filtersOverlay" class="overlay">
+    <div class="overlay-content">
+        <button class="close-button" onclick="closeFilters()">&times;</button>
+        <h2>Seleziona le categorie</h2>
+        <div class="counter" id="filterCounter"></div>
+        <button class="all-button" onclick="toggleAllCategories()">All</button>
+        <div id="filterButtons" class="button-container"></div>
+    </div>
+</div>
+<div id="settingsOverlay" class="overlay">
+    <div class="overlay-content settings-modal">
+        <div class="settings-header">
+            <h2>Impostazioni</h2>
+            <button class="close-button" onclick="closeSettings()">&times;</button>
+        </div>
+        
+        <div id="hideCategories" class="hide-categories-container">
+    <div class="hide-categories-header">
+        <h3>Nascondi categorie</h3>
+        <button id="closeHideCategories" class="close-button">&times;</button>
+    </div>
+    <div class="hide-categories-content">
+        <p class="hide-categories-info">Seleziona le categorie da nascondere dalla pagina principale</p>
+        <div id="hideCategoriesList" class="hide-categories-list"></div>
+    </div>
+</div>
+        
+        <div class="settings-body">
+            <div class="settings-item">
+                <label for="themeSelect">Tema</label>
+                <div class="select-wrapper">
+                    <select id="themeSelect" class="settings-select">
+                        <option value="light">Chiaro</option>
+                        <option value="dark">Scuro</option>
+                        <option value="cyberpunk">Cyberpunk</option>
+                        <option value="hacker">Hacker</option>
+                        <option value="vintage">Vintage</option>
+                        <option value="instagram">Instagram</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Aggiungi questo codice alla fine della sezione settings-body -->
+<div class="settings-item">
+    <label for="hideToggle">Nascondi</label>
+    <label class="toggle-switch">
+        <input type="checkbox" id="hideToggle">
+        <span class="toggle-slider"></span>
+    </label>
+</div>
+            
+            
+            <div class="settings-item">
+                <label>Layout</label>
+                <div class="layout-buttons">
+                    <button id="listLayoutBtn" class="layout-button active">
+                        <span class="layout-icon">☰</span> Lista
+                    </button>
+                    <button id="gridLayoutBtn" class="layout-button">
+                        <span class="layout-icon">▦</span> Griglia
+                    </button>
+                </div>
+            </div>
+            
+            
+            
+            <div class="settings-item">
+                <label>Colonne: <span id="columnValue">1</span></label>
+                <input type="range" min="1" max="10" value="1" class="column-slider" id="columnSlider">
+            </div>
+            
+            <div class="settings-item">
+                <label for="showFavoritesToggle">Mostra preferiti</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="showFavoritesToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<div id="webnobelLogo" style="position: fixed; top: 10px; left: 10px; font-size: 18px; font-weight: bold; z-index: 1000;"> </div>
+
+<div id="layoutOverlay" class="overlay">
+    <div class="overlay-content">
+        <button class="close-button" onclick="closeLayout()">&times;</button>
+        <h2>Seleziona il numero di colonne</h2>
+        <div class="button-container">
+            <button class="column-option" data-columns="1">1</button>
+            <button class="column-option" data-columns="2">2</button>
+            <button class="column-option" data-columns="3">3</button>
+            <button class="column-option" data-columns="4">4</button>
+            <button class="column-option" data-columns="5">5</button>
+            <button class="column-option" data-columns="6">6</button>
+            <button class="column-option" data-columns="7">7</button>
+            <button class="column-option" data-columns="8">8</button>
+            <button class="column-option" data-columns="9">9</button>
+            <button class="column-option" data-columns="10">10</button>
+        </div>
+    </div>
+</div>
+    <script>
+        let isDesktopLayout = false;
+
+function toggleLayout() {
+    isDesktopLayout = !isDesktopLayout;
+    const layoutToggle = document.getElementById('layoutToggle');
+    if (layoutToggle) {
+        layoutToggle.checked = true;
+    }
+    
+    updateDisplay();
+    updateCounters();
+    updateSettingsState();
+    
+    if (isDesktopLayout) {
+        layoutToggle.textContent = '💻';
+        document.querySelectorAll('.column-option').forEach(btn => {
+            btn.style.display = 'inline-block';
+        });
+    } else {
+        layoutToggle.textContent = '📱';
+        document.querySelectorAll('.column-option').forEach(btn => {
+            if (parseInt(btn.dataset.columns) > 6) {
+                btn.style.display = 'none';
+            } else {
+                btn.style.display = 'inline-block';
+            }
+        });
+    }
+    
+    openLayout();
+}
+let isListLayout = false;
+
+function switchLayout() {
+    isListLayout = !isListLayout;
+    const layoutSwitch = document.getElementById('layoutSwitch');
+    layoutSwitch.textContent = isListLayout ? '📊' : '🗂️';
+    updateDisplay();
+}
+
+function openLayout() {
+    document.getElementById('layoutOverlay').style.display = 'block';
+}
+
+function init() {
+    updateMainCategories();
+    updateFilterButtons();
+    isListLayout = true;  // Imposta il layout lista come default
+    currentColumns = 1;  // Imposta il valore delle colonne a 1
+    updateDisplay();
+    updateCounters();
+    updateSettingsState();
+
+    
+    // Aggiungi gli event listener per i temi
+    document.getElementById('cyberpunkToggle').addEventListener('change', toggleCyberpunkTheme);
+    document.getElementById('hackerToggle').addEventListener('change', toggleHackerTheme);
+    document.getElementById('vintageToggle').addEventListener('change', toggleVintageTheme);
+    document.getElementById('instagramToggle').addEventListener('change', toggleInstagramTheme);
+}
+let likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
+let showingLikedOnly = false;
+
+function toggleLike(event, itemName) {
+    event.preventDefault();
+    event.stopPropagation();
+    const index = likedItems.indexOf(itemName);
+    if (index > -1) {
+        likedItems.splice(index, 1);
+    } else {
+        likedItems.push(itemName);
+    }
+    localStorage.setItem('likedItems', JSON.stringify(likedItems));
+    updateDisplay();
+    updateCounters();
+}
+
+function toggleLikedItems() {
+    showingLikedOnly = !showingLikedOnly;
+    document.getElementById('likeToggle').classList.toggle('active', showingLikedOnly);
+    updateDisplay();
+    updateCounters();
+}
+
+function createCard(item) {
+    const card = document.createElement('div');
+    card.className = isListLayout ? 'list-item' : 'card';
+    const isLiked = likedItems.includes(item.Nome);
+    
+    if (isListLayout) {
+        card.innerHTML = `
+            <div class="list-item-content">
+                <img src="${item.URLFoto}" alt="${item.Nome}">
+                <div class="list-item-info">
+                    <h3>${item.Nome}</h3>
+                    <p>${item.Categoria}</p>
+                </div>
+                <button class="heart-button ${isLiked ? 'active' : ''}" onclick="toggleLike(event, '${item.Nome}')">
+                    ${isLiked ? '❤️' : '🤍'}
+                </button>
+                <a href="${item.URL}" target="_blank" class="open-button">APRI</a>
+            </div>
+        `;
+    } else {
+        card.innerHTML = `
+            <a href="${item.URL}" target="_blank">
+                <img src="${item.URLFoto}" alt="${item.Nome}">
+                <h3>${item.Nome}</h3>
+            </a>
+            <div class="heart-container">
+                <button class="heart-button ${isLiked ? 'active' : ''}" onclick="toggleLike(event, '${item.Nome}')">
+                    ${isLiked ? '❤️' : '🤍'}
+                </button>
+            </div>
+        `;
+    }
+    
+    return card;
+}
+function openSettings() {
+    document.getElementById('settingsOverlay').style.display = 'block';
+    updateSettingsState();
+}
+
+function closeSettings() {
+    document.getElementById('settingsOverlay').style.display = 'none';
+}
+
+function updateSettingsState() {
+    document.getElementById('themeToggle').checked = document.body.classList.contains('dark-theme');
+    document.getElementById('layoutToggle').checked = isListLayout;
+    document.getElementById('likedToggle').checked = showingLikedOnly;
+    document.getElementById('columnSlider').value = currentColumns;
+    document.getElementById('columnValue').textContent = currentColumns;
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
+    updateSettingsState();
+    updateDisplay();
+}
+
+function toggleLayout() {
+    isListLayout = !isListLayout;
+    updateSettingsState();
+    updateDisplay();
+}
+
+function toggleLikedItems() {
+    showingLikedOnly = !showingLikedOnly;
+    updateSettingsState();
+    updateDisplay();
+    updateCounters();
+}
+
+function changeColumns(value) {
+    currentColumns = value;
+    document.getElementById('columnValue').textContent = value;
+    if (currentColumns === 1) {
+        cardGrid.style.display = 'flex';
+        cardGrid.style.flexDirection = 'column';
+    } else {
+        cardGrid.style.display = 'grid';
+        cardGrid.style.gridTemplateColumns = `repeat(${currentColumns}, 1fr)`;
+    }
+    updateDisplay();
+}
+
+// Aggiungi questi event listener dopo la definizione delle funzioni
+document.getElementById('themeToggle').addEventListener('change', toggleTheme);
+document.getElementById('layoutToggle').addEventListener('change', toggleLayout);
+document.getElementById('likedToggle').addEventListener('change', toggleLikedItems);
+document.getElementById('columnSlider').addEventListener('input', (e) => changeColumns(e.target.value));
+
+
+// Chiamata alla funzione init all'avvio
+init();
+window.addEventListener('load', init);
+
+
+
+
+    </script>
+</body>
+
+    <script>
+        const jsonData = [
+  
+   { "Nome": "🟠 Ai WebNobel e Ai Driver4You la prima Intelligenza Artificiale in Vallecamonica In Arrivo", "Categoria": "Promo", "URLFoto": "https://sasasared.carrd.co/assets/images/image228.jpg?v=6c3e8883", "URL": "#" },
+
+  
+  
+  
+   
+{ "Nome": "FAQ Gestisci e guadagna", "Categoria": "Diventa Admin di", "URLFoto": "https://sasasared.carrd.co/assets/images/image208.jpg?v=29222105", "URL": "https://t.me/nobeliumlab/166" },
+
+            // Aggiungi qui altri elementi seguendo lo stesso formato
+        ];
+
+        const categories = [...new Set(jsonData.map(item => item.Categoria))].sort();
+        let activeCategories = [...categories];
+        let currentColumns = 2;
+
+        const mainCategoriesContainer = document.getElementById('mainCategories');
+        const filterButtonsContainer = document.getElementById('filterButtons');
+        const cardGrid = document.getElementById('cardGrid');
+        const searchInput = document.getElementById('searchInput');
+        const homeCounter = document.getElementById('homeCounter');
+        const filterCounter = document.getElementById('filterCounter');
+
+        function countItemsInCategory(category) {
+            return jsonData.filter(item => item.Categoria === category).length;
+        }
+
+        function createButton(category, container) {
+            const button = document.createElement('button');
+            const count = countItemsInCategory(category);
+            button.innerHTML = `${category} <span class="category-count">(${count})</span>`;
+            button.dataset.category = category;
+            button.classList.toggle('active', activeCategories.includes(category));
+            button.addEventListener('click', () => toggleCategory(category));
+            return button;
+        }
+
+   function toggleCategory(category) {
+    const index = activeCategories.indexOf(category);
+    if (index > -1) {
+        activeCategories.splice(index, 1);
+    } else {
+        activeCategories.push(category);
+    }
+    updateButtonStates();
+    updateDisplay();
+    updateCounters();
+}
+
+        function updateButtonStates() {
+    const allButtons = document.querySelectorAll('[data-category]');
+    allButtons.forEach(btn => {
+        const category = btn.dataset.category;
+        btn.classList.toggle('active', activeCategories.includes(category));
+    });
+}
+
+       function updateMainCategories() {
+    mainCategoriesContainer.innerHTML = '';
+    const allButton = document.createElement('button');
+    allButton.textContent = 'All';
+    allButton.classList.toggle('active', activeCategories.length === categories.length);
+    allButton.addEventListener('click', toggleAllCategories);
+    mainCategoriesContainer.appendChild(allButton);
+    categories.forEach(category => {
+        mainCategoriesContainer.appendChild(createButton(category, mainCategoriesContainer));
+    });
+}
+
+ // Modifica la funzione updateDisplay per mantenere il layout lista
+function updateDisplay() {
+    const searchTerm = searchInput.value.toLowerCase();
+    cardGrid.innerHTML = '';
+    cardGrid.className = 'list';
+    
+    jsonData.forEach(item => {
+        if ((activeCategories.length === 0 || activeCategories.includes(item.Categoria)) &&
+            item.Nome.toLowerCase().includes(searchTerm) &&
+            (!showingLikedOnly || likedItems.includes(item.Nome))) {
+            cardGrid.appendChild(createCard(item));
+        }
+    });
+}
+
+function updateCounters() {
+    const totalCategories = categories.length;
+    const activeProductsServices = jsonData.filter(item => 
+        (activeCategories.length === 0 || activeCategories.includes(item.Categoria)) &&
+        (!showingLikedOnly || likedItems.includes(item.Nome))
+    ).length;
+    const likedItemsCount = likedItems.length;
+    const counterText = `
+        <div>Categorie: <span>${activeCategories.length}/${totalCategories}</span></div>
+        <div>Prodotti/Servizi: <span>${activeProductsServices}/${jsonData.length}</span></div>
+        <div>❤️ Preferiti: <span>${likedItemsCount}</span></div>
+    `;
+    homeCounter.innerHTML = counterText;
+    filterCounter.innerHTML = counterText;
+}
+
+       function createCard(item) {
+    const card = document.createElement('div');
+    card.className = isListLayout ? 'list-item' : 'card';
+    const isLiked = likedItems.includes(item.Nome);
+    
+    if (isListLayout) {
+        card.innerHTML = `
+            <div class="list-item-content">
+                <img src="${item.URLFoto}" alt="${item.Nome}">
+                <div class="list-item-info">
+                    <h3>${item.Nome}</h3>
+                    <p>${item.Categoria}</p>
+                </div>
+                <button class="heart-button ${isLiked ? 'active' : ''}" onclick="toggleLike(event, '${item.Nome}')">
+                    ${isLiked ? '❤️' : '🤍'}
+                </button>
+                <a href="${item.URL}" target="_blank" class="open-button">OPEN</a>
+            </div>
+        `;
+    } else {
+        card.innerHTML = `
+            <a href="${item.URL}" target="_blank">
+                <img src="${item.URLFoto}" alt="${item.Nome}">
+                <h3>${item.Nome}</h3>
+            </a>
+            <div class="heart-container">
+                <button class="heart-button ${isLiked ? 'active' : ''}" onclick="toggleLike(event, '${item.Nome}')">
+                    ${isLiked ? '❤️' : '🤍'}
+                </button>
+            </div>
+        `;
+    }
+    
+    return card;
+}
+
+        function openFilters() {
+            document.getElementById('filtersOverlay').style.display = 'block';
+            updateFilterButtons();
+        }
+
+        function closeFilters() {
+            document.getElementById('filtersOverlay').style.display = 'none';
+        }
+
+        function updateFilterButtons() {
+            filterButtonsContainer.innerHTML = '';
+            categories.forEach(category => {
+                filterButtonsContainer.appendChild(createButton(category));
+            });
+        }
+
+        function openLayout() {
+            document.getElementById('layoutOverlay').style.display = 'block';
+        }
+
+        function closeLayout() {
+            document.getElementById('layoutOverlay').style.display = 'none';
+        }
+
+        function toggleTheme() {
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    body.classList.toggle('dark-theme');
+    themeToggle.textContent = body.classList.contains('dark-theme') ? '☀️' : '🌙';
+    updateButtonStates(); // Aggiungi questa riga
+}
+       function toggleAllCategories() {
+    if (activeCategories.length === categories.length) {
+        activeCategories = [];
+    } else {
+        activeCategories = [...categories];
+    }
+    updateButtonStates();
+    updateDisplay();
+    updateCounters();
+}
+
+        document.querySelectorAll('.column-option').forEach(button => {
+    button.addEventListener('click', () => {
+        currentColumns = parseInt(button.dataset.columns);
+        document.querySelectorAll('.column-option').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        if (currentColumns === 1) {
+            cardGrid.style.display = 'flex';
+            cardGrid.style.flexDirection = 'column';
+        } else {
+            cardGrid.style.display = 'grid';
+            cardGrid.style.gridTemplateColumns = `repeat(${currentColumns}, 1fr)`;
+        }
+        closeLayout();
+    });
+});
+
+        searchInput.addEventListener('input', updateDisplay);
+
+        updateMainCategories();
+        updateFilterButtons();
+        updateDisplay();
+        updateCounters();
+        cardGrid.style.gridTemplateColumns = `repeat(${currentColumns}, 1fr)`;
+        // Variabili globali
+let adminTimerStart;
+let adminCountdown;
+let isAdminMode = false;
+
+// Funzione per creare la barra di caricamento circolare
+function createLoadingBar() {
+    const settingsButton = document.getElementById('settingsButton');
+    const loadingBar = document.createElement('div');
+    loadingBar.className = 'circular-loading';
+    settingsButton.appendChild(loadingBar);
+}
+
+// Funzione per aggiornare la barra di caricamento
+function updateLoadingBar(progress) {
+    const loadingBar = document.querySelector('.circular-loading');
+    loadingBar.style.background = `conic-gradient(
+        ${document.body.classList.contains('dark-theme') ? '#00a86b' : '#007bff'} ${progress}%, 
+        transparent ${progress}%
+    )`;
+}
+
+
+
+// Funzione per gestire il conto alla rovescia
+function startAdminCountdown() {
+    let countdown = 10;
+    const settingsButton = document.getElementById('settingsButton');
+    
+    adminCountdown = setInterval(() => {
+        countdown--;
+        settingsButton.textContent = countdown;
+        
+        if (countdown === 0) {
+            clearInterval(adminCountdown);
+            settingsButton.textContent = '⚙️';
+            createAdminButton();
+        }
+    }, 1000);
+}
+
+// Funzione per creare il pulsante Admin
+function createAdminButton() {
+    const adminButton = document.createElement('button');
+    adminButton.textContent = 'Admin';
+    adminButton.id = 'adminButton';
+    adminButton.style.position = 'absolute';
+    adminButton.style.top = '10px';
+    adminButton.style.left = '10px';
+    document.body.appendChild(adminButton);
+    
+    adminButton.addEventListener('click', toggleAdminMode);
+}
+
+// Funzione per attivare/disattivare la modalità Admin
+function toggleAdminMode() {
+    isAdminMode = !isAdminMode;
+    if (isAdminMode) {
+        enableAdminInterface();
+    } else {
+        disableAdminInterface();
+    }
+}
+
+// Funzione per abilitare l'interfaccia Admin
+function enableAdminInterface() {
+    // Crea l'interfaccia di editing
+    const adminInterface = document.createElement('div');
+    adminInterface.id = 'adminInterface';
+    adminInterface.style.position = 'fixed';
+    adminInterface.style.top = '50px';
+    adminInterface.style.left = '10px';
+    adminInterface.style.backgroundColor = document.body.classList.contains('dark-theme') ? '#2a2a2a' : '#f0f0f0';
+    adminInterface.style.padding = '10px';
+    adminInterface.style.borderRadius = '5px';
+    
+    // Aggiungi pulsanti per importare/esportare
+    const importButton = document.createElement('button');
+    importButton.textContent = 'Importa Template';
+    importButton.onclick = importTemplate;
+    
+    const exportButton = document.createElement('button');
+    exportButton.textContent = 'Esporta Template';
+    exportButton.onclick = exportTemplate;
+    
+    adminInterface.appendChild(importButton);
+    adminInterface.appendChild(exportButton);
+    
+    document.body.appendChild(adminInterface);
+    
+    // Abilita l'editing degli elementi
+    enableEditing();
+}
+
+// Funzione per disabilitare l'interfaccia Admin
+function disableAdminInterface() {
+    const adminInterface = document.getElementById('adminInterface');
+    if (adminInterface) {
+        adminInterface.remove();
+    }
+    disableEditing();
+}
+
+// Funzione per abilitare l'editing degli elementi
+function enableEditing() {
+    document.querySelectorAll('h1, h2, h3, p, img, a').forEach(element => {
+        element.contentEditable = true;
+        element.draggable = true;
+        element.addEventListener('click', editElement);
+    });
+}
+
+// Funzione per disabilitare l'editing degli elementi
+function disableEditing() {
+    document.querySelectorAll('h1, h2, h3, p, img, a').forEach(element => {
+        element.contentEditable = false;
+        element.draggable = false;
+        element.removeEventListener('click', editElement);
+    });
+}
+
+// Funzione per editare un elemento
+function editElement(event) {
+    const element = event.target;
+    // Implementa qui la logica per l'editing dell'elemento
+    console.log('Editing element:', element);
+}
+
+// Funzione per importare un template
+function importTemplate() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.html';
+    input.onchange = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            document.body.innerHTML = e.target.result;
+            enableAdminInterface();
+        };
+        reader.readAsText(file);
+    };
+    input.click();
+}
+
+// Funzione per esportare il template
+function exportTemplate() {
+    const htmlContent = document.documentElement.outerHTML;
+    const blob = new Blob([htmlContent], {type: 'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'template.html';
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+// Event listener per il pulsante Impostazioni
+document.getElementById('settingsButton').addEventListener('mousedown', () => {
+    adminTimerStart = Date.now();
+});
+
+document.getElementById('settingsButton').addEventListener('mouseup', () => {
+    if (Date.now() - adminTimerStart >= 3000) {
+        startAdminCountdown();
+    }
+});
+
+// Salva le modifiche nel LocalStorage
+function saveChanges() {
+    localStorage.setItem('templateContent', document.body.innerHTML);
+}
+
+// Carica le modifiche dal LocalStorage
+function loadChanges() {
+    const savedContent = localStorage.getItem('templateContent');
+    if (savedContent) {
+        document.body.innerHTML = savedContent;
+    }
+}
+
+// Chiama loadChanges all'avvio per caricare eventuali modifiche salvate
+loadChanges();
+let isCyberpunkTheme = false;
+
+function toggleCyberpunkTheme() {
+    isCyberpunkTheme = !isCyberpunkTheme;
+    document.body.classList.toggle('cyberpunk-theme', isCyberpunkTheme);
+    if (isCyberpunkTheme) {
+        document.body.classList.add('dark-theme');
+        document.body.classList.remove('hacker-theme');
+        isHackerTheme = false;
+    }
+    updateSettingsState();
+    updateDisplay();
+}
+let isVintageTheme = false;
+
+function toggleVintageTheme() {
+    isVintageTheme = !isVintageTheme;
+    document.body.classList.toggle('vintage-theme', isVintageTheme);
+    if (isVintageTheme) {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.remove('cyberpunk-theme');
+        document.body.classList.remove('hacker-theme');
+        document.body.classList.remove('instagram-theme');
+        isCyberpunkTheme = false;
+        isHackerTheme = false;
+        isInstagramTheme = false;
+    }
+    updateSettingsState();
+    updateDisplay();
+}
+
+function updateSettingsState() {
+    document.getElementById('themeToggle').checked = document.body.classList.contains('dark-theme');
+    document.getElementById('cyberpunkToggle').checked = document.body.classList.contains('cyberpunk-theme');
+    document.getElementById('layoutToggle').checked = isListLayout;
+    document.getElementById('likedToggle').checked = showingLikedOnly;
+    document.getElementById('columnSlider').value = currentColumns;
+    document.getElementById('columnValue').textContent = currentColumns;
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
+    if (document.body.classList.contains('cyberpunk-theme')) {
+        document.body.classList.remove('cyberpunk-theme');
+        isCyberpunkTheme = false;
+    }
+    updateSettingsState();
+    updateDisplay();
+}
+
+// Funzionalità per il dropdown dei siti
+document.addEventListener('DOMContentLoaded', function() {
+    const sitesButton = document.getElementById('sitesButton');
+    const sitesContent = document.getElementById('sitesContent');
+    
+    if (sitesButton && sitesContent) {
+        // Mostra/nascondi il dropdown quando si clicca sul pulsante
+        sitesButton.addEventListener('click', function(event) {
+            event.stopPropagation(); // Impedisce che l'evento raggiunga il document
+            sitesContent.classList.toggle('show');
+        });
+        
+        // Chiudi il dropdown se l'utente clicca al di fuori di esso
+        document.addEventListener('click', function(event) {
+            if (!sitesButton.contains(event.target) && !sitesContent.contains(event.target)) {
+                if (sitesContent.classList.contains('show')) {
+                    sitesContent.classList.remove('show');
+                }
+            }
+        });
+    }
+});
+
+// Esegui immediatamente se il DOM è già caricato
+if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    const sitesButton = document.getElementById('sitesButton');
+    const sitesContent = document.getElementById('sitesContent');
+    
+    if (sitesButton && sitesContent) {
+        sitesButton.addEventListener('click', function(event) {
+            event.stopPropagation();
+            sitesContent.classList.toggle('show');
+        });
+        
+        document.addEventListener('click', function(event) {
+            if (!sitesButton.contains(event.target) && !sitesContent.contains(event.target)) {
+                if (sitesContent.classList.contains('show')) {
+                    sitesContent.classList.remove('show');
+                }
+            }
+        });
+    }
+}
+
+function init() {
+    updateMainCategories();
+    updateFilterButtons();
+    isListLayout = true;  // Imposta il layout lista come default
+    currentColumns = 1;  // Imposta il valore delle colonne a 1
+    updateDisplay();
+    updateCounters();
+    updateSettingsState();
+    
+    // Aggiungi gli event listener per i temi
+    document.getElementById('cyberpunkToggle').addEventListener('change', toggleCyberpunkTheme);
+    document.getElementById('hackerToggle').addEventListener('change', toggleHackerTheme);
+    document.getElementById('vintageToggle').addEventListener('change', toggleVintageTheme);
+    document.getElementById('instagramToggle').addEventListener('change', toggleInstagramTheme);
+}
+
+// Chiamata alla funzione init all'avvio
+window.addEventListener('load', init);
+
+let isHackerTheme = false;
+
+function toggleHackerTheme() {
+    isHackerTheme = !isHackerTheme;
+    document.body.classList.toggle('hacker-theme', isHackerTheme);
+    if (isHackerTheme) {
+        document.body.classList.add('dark-theme');
+        document.body.classList.remove('cyberpunk-theme');
+        isCyberpunkTheme = false;
+    }
+    updateSettingsState();
+    updateDisplay();
+}
+
+function updateSettingsState() {
+    document.getElementById('themeToggle').checked = document.body.classList.contains('dark-theme');
+    document.getElementById('cyberpunkToggle').checked = document.body.classList.contains('cyberpunk-theme');
+    document.getElementById('hackerToggle').checked = document.body.classList.contains('hacker-theme');
+    document.getElementById('vintageToggle').checked = document.body.classList.contains('vintage-theme');
+    document.getElementById('instagramToggle').checked = document.body.classList.contains('instagram-theme');
+    document.getElementById('layoutToggle').checked = isListLayout;
+    document.getElementById('likedToggle').checked = showingLikedOnly;
+    document.getElementById('columnSlider').value = currentColumns;
+    document.getElementById('columnValue').textContent = currentColumns;
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
+    if (document.body.classList.contains('cyberpunk-theme') || document.body.classList.contains('hacker-theme')) {
+        document.body.classList.remove('cyberpunk-theme');
+        document.body.classList.remove('hacker-theme');
+        isCyberpunkTheme = false;
+        isHackerTheme = false;
+    }
+    updateSettingsState();
+    updateDisplay();
+}
+
+function toggleCyberpunkTheme() {
+    isCyberpunkTheme = !isCyberpunkTheme;
+    document.body.classList.toggle('cyberpunk-theme', isCyberpunkTheme);
+    if (isCyberpunkTheme) {
+        document.body.classList.add('dark-theme');
+        document.body.classList.remove('hacker-theme');
+        isHackerTheme = false;
+    }
+    updateSettingsState();
+    updateDisplay();
+}
+let isInstagramTheme = false;
+
+function toggleInstagramTheme() {
+    isInstagramTheme = !isInstagramTheme;
+    document.body.classList.toggle('instagram-theme', isInstagramTheme);
+    if (isInstagramTheme) {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.remove('cyberpunk-theme');
+        document.body.classList.remove('hacker-theme');
+        document.body.classList.remove('vintage-theme');
+        isCyberpunkTheme = false;
+        isHackerTheme = false;
+        isVintageTheme = false;
+    }
+    updateSettingsState();
+    updateDisplay();
+}
+
+function init() {
+    updateMainCategories();
+    updateFilterButtons();
+    isListLayout = true;  // Imposta il layout lista come default
+    currentColumns = 1;  // Imposta il valore delle colonne a 1
+    updateDisplay();
+    updateCounters();
+    updateSettingsState();
+    
+    // Aggiungi gli event listener per i temi
+    document.getElementById('cyberpunkToggle').addEventListener('change', toggleCyberpunkTheme);
+    document.getElementById('hackerToggle').addEventListener('change', toggleHackerTheme);
+    document.getElementById('vintageToggle').addEventListener('change', toggleVintageTheme);
+    document.getElementById('instagramToggle').addEventListener('change', toggleInstagramTheme);
+}
+
+// Chiamata alla funzione init all'avvio
+window.addEventListener('load', init);
+
+const aiChatButton = document.getElementById('aiChatButton');
+const aiChatOverlay = document.getElementById('aiChatOverlay');
+const closeAiChat = document.getElementById('closeAiChat');
+const aiChatMessages = document.getElementById('aiChatMessages');
+const passwordPrompt = document.getElementById('passwordPrompt');
+const chatPassword = document.getElementById('chatPassword');
+const submitPassword = document.getElementById('submitPassword');
+const featuresButton = document.getElementById('featuresButton');
+const featuresSlider = document.getElementById('featuresSlider');
+const loginSlider = document.getElementById('loginSlider');
+const aiChatFrame = document.getElementById('aiChatFrame');
+
+let isAuthenticated = false;
+let isSliderVisible = false;
+
+function showAiChatOverlay() {
+  aiChatOverlay.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  if (isAuthenticated) {
+    loginSlider.style.display = 'none';
+    passwordPrompt.style.display = 'none';
+    aiChatMessages.style.display = 'block';
+    aiChatFrame.style.display = 'block';
+  } else {
+    loginSlider.style.display = 'block';
+    passwordPrompt.style.display = 'flex';
+    aiChatMessages.style.display = 'none';
+  }
+}
+
+function closeAiChatOverlay() {
+  aiChatOverlay.style.display = 'none';
+  document.body.style.overflow = '';
+  featuresSlider.style.display = 'none';
+  isSliderVisible = false;
+}
+
+function checkPassword() {
+  const password = chatPassword.value;
+  if (password === '1234figa') {
+    isAuthenticated = true;
+    loginSlider.style.display = 'none';
+    passwordPrompt.style.display = 'none';
+    aiChatMessages.style.display = 'block';
+    featuresButton.style.display = 'block';
+    aiChatFrame.style.display = 'block';
+  } else {
+    alert('Password errata. Riprova.');
+    chatPassword.value = '';
+  }
+}
+
+function toggleFeaturesSlider() {
+  isSliderVisible = !isSliderVisible;
+  featuresSlider.style.display = isSliderVisible ? 'block' : 'none';
+}
+
+aiChatButton.addEventListener('click', showAiChatOverlay);
+closeAiChat.addEventListener('click', closeAiChatOverlay);
+submitPassword.addEventListener('click', checkPassword);
+chatPassword.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    checkPassword();
+  }
+});
+featuresButton.addEventListener('click', toggleFeaturesSlider);
+
+// Abilita lo scroll orizzontale con il mouse
+document.querySelectorAll('.image-slider').forEach(slider => {
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 3;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+});
+
+const promptButton = document.getElementById('promptButton');
+const promptList = document.getElementById('promptList');
+const promptSearch = document.getElementById('promptSearch');
+const promptCounter = document.getElementById('promptCounter');
+const promptCategories = document.querySelector('.prompt-categories');
+const promptItems = document.querySelector('.prompt-items');
+
+let allPrompts = Array.from(promptItems.querySelectorAll('.prompt-item'));
+let activeCategory = 'Driver4You';
+
+function updatePromptCounter() {
+  const totalPrompts = allPrompts.length;
+  const totalCategories = new Set(allPrompts.map(item => item.dataset.category)).size;
+  promptCounter.textContent = `Totale Prompt: ${totalPrompts} | Categorie: ${totalCategories}`;
+}
+
+function filterPrompts(category, searchTerm = '') {
+  allPrompts.forEach(item => {
+    const matchesCategory = category === 'all' || item.dataset.category === category;
+    const matchesSearch = item.textContent.toLowerCase().includes(searchTerm.toLowerCase());
+    item.style.display = matchesCategory && matchesSearch ? 'block' : 'none';
+  });
+}
+
+promptButton.addEventListener('click', () => {
+  promptList.style.display = promptList.style.display === 'block' ? 'none' : 'block';
+  if (promptList.style.display === 'block') {
+    updatePromptCounter();
+    filterPrompts(activeCategory);
+  }
+});
+
+document.addEventListener('click', (event) => {
+  if (!promptButton.contains(event.target) && !promptList.contains(event.target)) {
+    promptList.style.display = 'none';
+  }
+});
+
+promptSearch.addEventListener('input', (e) => {
+  filterPrompts(activeCategory, e.target.value);
+});
+
+promptCategories.addEventListener('click', (e) => {
+  if (e.target.classList.contains('category-button')) {
+    activeCategory = e.target.dataset.category;
+    document.querySelectorAll('.category-button').forEach(btn => btn.classList.remove('active'));
+    e.target.classList.add('active');
+    filterPrompts(activeCategory, promptSearch.value);
+  }
+});
+
+promptItems.addEventListener('click', (event) => {
+  if (event.target.classList.contains('prompt-item')) {
+    const promptText = event.target.getAttribute('data-prompt');
+    copyToClipboard(promptText);
+    promptList.style.display = 'none';
+  }
+});
+
+function copyToClipboard(text) {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+  
+  if (isAuthenticated) {
+    // Se l'utente è autenticato, inserisci il prompt nella chat
+    console.log('Prompt inserito nella chat:', text);
+  } else {
+    // Se l'utente non è autenticato, mostra un messaggio che invita all'acquisto
+    alert('Prompt copiato! Per utilizzarlo, accedi o acquista il servizio AI.');
+  }
+}
+
+// Inizializza il contatore e filtra i prompt all'avvio
+updatePromptCounter();
+filterPrompts(activeCategory);
+
+// Funzioni per la nuova interfaccia impostazioni
+function openSettings() {
+    document.getElementById('settingsOverlay').style.display = 'block';
+    updateSettingsUI();
+}
+
+function closeSettings() {
+    document.getElementById('settingsOverlay').style.display = 'none';
+}
+
+function updateSettingsUI() {
+    // Aggiorna il selettore del tema
+    const themeSelect = document.getElementById('themeSelect');
+    if (document.body.classList.contains('dark-theme')) {
+        themeSelect.value = 'dark';
+    } else if (document.body.classList.contains('cyberpunk-theme')) {
+        themeSelect.value = 'cyberpunk';
+    } else if (document.body.classList.contains('hacker-theme')) {
+        themeSelect.value = 'hacker';
+    } else if (document.body.classList.contains('vintage-theme')) {
+        themeSelect.value = 'vintage';
+    } else if (document.body.classList.contains('instagram-theme')) {
+        themeSelect.value = 'instagram';
+    } else {
+        themeSelect.value = 'light';
+    }
+    
+    // Aggiorna i pulsanti del layout
+    const listLayoutBtn = document.getElementById('listLayoutBtn');
+    const gridLayoutBtn = document.getElementById('gridLayoutBtn');
+    
+    if (isListLayout) {
+        listLayoutBtn.classList.add('active');
+        gridLayoutBtn.classList.remove('active');
+    } else {
+        listLayoutBtn.classList.remove('active');
+        gridLayoutBtn.classList.add('active');
+    }
+    
+    // Aggiorna lo slider delle colonne
+    document.getElementById('columnSlider').value = currentColumns;
+    document.getElementById('columnValue').textContent = currentColumns;
+    
+    // Aggiorna l'interruttore dei preferiti
+    document.getElementById('showFavoritesToggle').checked = showingLikedOnly;
+}
+
+// Aggiungi questi event listener dopo aver definito le funzioni
+document.addEventListener('DOMContentLoaded', function() {
+    // Event listener per il selettore del tema
+    document.getElementById('themeSelect').addEventListener('change', function(e) {
+        // Rimuovi tutte le classi di tema
+        document.body.classList.remove('dark-theme', 'cyberpunk-theme', 'hacker-theme', 'vintage-theme', 'instagram-theme');
+        
+        // Applica il tema selezionato
+        switch(e.target.value) {
+            case 'dark':
+                document.body.classList.add('dark-theme');
+                break;
+            case 'cyberpunk':
+                document.body.classList.add('dark-theme', 'cyberpunk-theme');
+                break;
+            case 'hacker':
+                document.body.classList.add('dark-theme', 'hacker-theme');
+                break;
+            case 'vintage':
+                document.body.classList.add('vintage-theme');
+                break;
+            case 'instagram':
+                document.body.classList.add('instagram-theme');
+                break;
+        }
+        
+        updateDisplay();
+    });
+    
+    // Event listener per i pulsanti del layout
+    document.getElementById('listLayoutBtn').addEventListener('click', function() {
+        if (!isListLayout) {
+            isListLayout = true;
+            updateSettingsUI();
+            updateDisplay();
+        }
+    });
+    
+    document.getElementById('gridLayoutBtn').addEventListener('click', function() {
+        if (isListLayout) {
+            isListLayout = false;
+            updateSettingsUI();
+            updateDisplay();
+        }
+    });
+    
+    // Event listener per lo slider delle colonne
+    document.getElementById('columnSlider').addEventListener('input', function(e) {
+        currentColumns = parseInt(e.target.value);
+        document.getElementById('columnValue').textContent = currentColumns;
+        
+        if (currentColumns === 1) {
+            cardGrid.style.display = 'flex';
+            cardGrid.style.flexDirection = 'column';
+        } else {
+            cardGrid.style.display = 'grid';
+            cardGrid.style.gridTemplateColumns = `repeat(${currentColumns}, 1fr)`;
+        }
+        
+        updateDisplay();
+    });
+    
+    // Variabili per la funzionalità Nascondi
+let hiddenCategories = JSON.parse(localStorage.getItem('hiddenCategories')) || [];
+const hideToggle = document.getElementById('hideToggle');
+const hideCategories = document.getElementById('hideCategories');
+const closeHideCategories = document.getElementById('closeHideCategories');
+const hideCategoriesList = document.getElementById('hideCategoriesList');
+
+// Funzione per aggiornare la lista delle categorie nascoste
+function updateHideCategoriesList() {
+    hideCategoriesList.innerHTML = '';
+    
+    categories.forEach(category => {
+        const categoryItem = document.createElement('div');
+        categoryItem.className = `hide-category-item ${hiddenCategories.includes(category) ? 'hidden' : ''}`;
+        categoryItem.dataset.category = category;
+        
+        categoryItem.innerHTML = `
+            <span class="hide-category-icon">🗑️</span>
+            <span class="hide-category-name">${category}</span>
+        `;
+        
+        categoryItem.addEventListener('click', () => toggleHideCategory(category));
+        hideCategoriesList.appendChild(categoryItem);
+    });
+}
+
+// Funzione per mostrare/nascondere la tendina delle categorie nascoste
+function toggleHideCategoriesPanel() {
+    if (hideToggle.checked) {
+        hideCategories.style.display = 'block';
+        updateHideCategoriesList();
+    } else {
+        hideCategories.style.display = 'none';
+    }
+}
+
+// Funzione per nascondere/mostrare una categoria
+function toggleHideCategory(category) {
+    const index = hiddenCategories.indexOf(category);
+    
+    if (index > -1) {
+        // Rimuovi la categoria dalle nascoste
+        hiddenCategories.splice(index, 1);
+    } else {
+        // Aggiungi la categoria alle nascoste
+        hiddenCategories.push(category);
+    }
+    
+    // Salva le preferenze nel localStorage
+    localStorage.setItem('hiddenCategories', JSON.stringify(hiddenCategories));
+    
+    // Aggiorna l'interfaccia
+    updateHideCategoriesList();
+    updateMainCategories();
+    updateFilterButtons();
+    updateDisplay();
+    updateCounters();
+}
+
+// Funzione per chiudere la tendina delle categorie nascoste
+function closeHideCategoriesPanel() {
+    hideCategories.style.display = 'none';
+    hideToggle.checked = false;
+}
+
+// Modifica la funzione updateDisplay per escludere le categorie nascoste
+function updateDisplay() {
+    const searchTerm = searchInput.value.toLowerCase();
+    cardGrid.innerHTML = '';
+    cardGrid.className = isListLayout ? 'list' : 'grid';
+    
+    if (isListLayout) {
+        cardGrid.style.display = 'flex';
+        cardGrid.style.flexDirection = 'column';
+    } else {
+        cardGrid.style.display = 'grid';
+        cardGrid.style.gridTemplateColumns = `repeat(${currentColumns}, 1fr)`;
+    }
+    
+    jsonData.forEach(item => {
+        if ((activeCategories.length === 0 || activeCategories.includes(item.Categoria)) &&
+            !hiddenCategories.includes(item.Categoria) &&
+            item.Nome.toLowerCase().includes(searchTerm) &&
+            (!showingLikedOnly || likedItems.includes(item.Nome))) {
+            cardGrid.appendChild(createCard(item));
+        }
+    });
+}
+
+// Modifica la funzione updateMainCategories per escludere le categorie nascoste
+function updateMainCategories() {
+    mainCategoriesContainer.innerHTML = '';
+    const allButton = document.createElement('button');
+    allButton.textContent = 'All';
+    allButton.classList.toggle('active', activeCategories.length === categories.length);
+    allButton.addEventListener('click', toggleAllCategories);
+    mainCategoriesContainer.appendChild(allButton);
+    
+    categories.forEach(category => {
+        if (!hiddenCategories.includes(category)) {
+            mainCategoriesContainer.appendChild(createButton(category, mainCategoriesContainer));
+        }
+    });
+}
+
+// Modifica la funzione updateCounters per considerare le categorie nascoste
+function updateCounters() {
+    const visibleCategories = categories.filter(cat => !hiddenCategories.includes(cat));
+    const totalCategories = categories.length;
+    const activeProductsServices = jsonData.filter(item => 
+        (activeCategories.length === 0 || activeCategories.includes(item.Categoria)) &&
+        !hiddenCategories.includes(item.Categoria) &&
+        (!showingLikedOnly || likedItems.includes(item.Nome))
+    ).length;
+    const likedItemsCount = likedItems.length;
+    const counterText = `
+        <div>Categorie: <span>${visibleCategories.length}/${totalCategories}</span></div>
+        <div>Prodotti/Servizi: <span>${activeProductsServices}/${jsonData.length}</span></div>
+        <div>❤️ Preferiti: <span>${likedItemsCount}</span></div>
+    `;
+    homeCounter.innerHTML = counterText;
+    filterCounter.innerHTML = counterText;
+}
+
+// Aggiungi gli event listener per la funzionalità Nascondi
+hideToggle.addEventListener('change', toggleHideCategoriesPanel);
+closeHideCategories.addEventListener('click', closeHideCategoriesPanel);
+
+// Modifica la funzione init per inizializzare la funzionalità Nascondi
+function init() {
+    updateMainCategories();
+    updateFilterButtons();
+    isListLayout = true;  // Imposta il layout lista come default
+    currentColumns = 1;  // Imposta il valore delle colonne a 1
+    updateDisplay();
+    updateCounters();
+    updateSettingsUI();
+    
+    // Inizializza la funzionalità Nascondi
+    updateHideCategoriesList();
+}
+
+// Aggiorna la funzione updateSettingsUI per includere lo stato del toggle Nascondi
+function updateSettingsUI() {
+    // Codice esistente...
+    
+    // Aggiorna l'interruttore Nascondi
+    document.getElementById('hideToggle').checked = hideCategories.style.display === 'block';
+}
+
+    
+    // Event listener per l'interruttore dei preferiti
+    document.getElementById('showFavoritesToggle').addEventListener('change', function(e) {
+        showingLikedOnly = e.target.checked;
+        updateDisplay();
+        updateCounters();
+    });
+});
+    </script>
+</body>
+</html>
